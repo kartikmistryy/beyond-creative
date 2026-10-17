@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Design tokens — light grey paper, electric blue, deep navy.
+   Grotesk (medium) for everything, italic serif for highlighted phrases.
+--------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #e6e6e6;
+  --paper-d: #979797;
+  --ink: #050516;
+  --blue: #0004eb;
+  --blue-hi: #5558ff; /* blue for text on navy: #0004eb on #050516 is ~2.1:1, this is ~3.7:1 (WCAG large text) */
+  --muted: #979797;
+  --line: color-mix(in oklab, currentColor 22%, transparent);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.7, 0, 0.3, 1);
+  --pad: 40px;
+}
+@media (max-width: 767px) {
+  :root { --pad: 16px; }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-d: var(--paper-d);
+  --color-ink: var(--ink);
+  --color-blue: var(--blue);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-grotesk);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  background: var(--paper);
+  color: var(--blue);
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+/* readable blue on navy sections */
+[data-theme="dark"].text-blue, [data-theme="dark"] .text-blue { color: var(--blue-hi); }
+
+::selection { background: var(--blue); color: var(--paper); }
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------------------------------------------------------------- type ---- */
+.t-xxl { font-size: clamp(3rem, 9vw, 8.5rem); line-height: 0.92; letter-spacing: -0.045em; }
+.t-xl  { font-size: clamp(2.5rem, 4.72vw, 4.25rem); line-height: 1.1; letter-spacing: -0.03em; }
+.t-1   { font-size: clamp(1.75rem, 3.06vw, 2.75rem); line-height: 1.1; letter-spacing: -0.03em; }
+.t-2   { font-size: clamp(1.25rem, 1.8vw, 1.625rem); line-height: 1.1; letter-spacing: -0.03em; }
+.t-3   { font-size: clamp(1rem, 1.25vw, 1.125rem); line-height: 1.2; letter-spacing: -0.01em; }
+.t-s   { font-size: 0.8125rem; line-height: 1.3; }
+
+.serif, .accent {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* ---------------------------------------------------------------- layout -- */
+.wrap { padding-inline: var(--pad); }
+.grid12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 12px; }
+/* back-compat alias used in admin */
+.gutter { padding-inline: var(--pad); }
+.label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ------------------------------------------------- highlight (grey→blue) -- */
+/* Italic phrase that wipes in: a grey bar sweeps first, then blue on top. */
+@property --hg { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@property --hb { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+.hl {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  padding: 0 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background:
+    linear-gradient(var(--blue), var(--blue)) no-repeat 0 0 / var(--hb) 100%,
+    linear-gradient(var(--paper-d), var(--paper-d)) no-repeat 0 0 / var(--hg) 100%;
+  --hg: 100%;
+  --hb: 100%;
+}
+.hl.on-blue {
+  background:
+    linear-gradient(var(--paper), var(--paper)) no-repeat 0 0 / var(--hb) 100%,
+    linear-gradient(var(--paper-d), var(--paper-d)) no-repeat 0 0 / var(--hg) 100%;
+  color: var(--blue);
+}
+
+/* ------------------------------------------------------------ reveals ----- */
+/* Only hide things when JS is running (Motion adds .in), so no-JS still shows content. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 1s var(--ease), transform 1.2s var(--ease);
+    transition-delay: var(--d, 0ms);
   }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  [data-reveal] .hl { --hg: 0%; --hb: 0%; color: transparent; transition: --hg 0.55s var(--ease-io), --hb 0.55s var(--ease-io), color 0s; }
+  [data-reveal].in .hl {
+    --hg: 100%; --hb: 100%;
+    color: var(--paper);
+    transition-delay: calc(var(--d, 0ms) + 350ms), calc(var(--d, 0ms) + 650ms), calc(var(--d, 0ms) + 900ms);
+  }
+  [data-reveal].in .hl.on-blue { color: var(--blue); }
+
+  /* grey curtain that slides off cards */
+  [data-curtain] { position: relative; }
+  [data-curtain]::after {
+    content: ""; position: absolute; inset: 0; background: var(--paper-d); z-index: 2;
+    transform-origin: right; transition: transform 0.9s var(--ease-io); transition-delay: calc(var(--d, 0ms) + 150ms);
+  }
+  .in [data-curtain]::after, [data-curtain].in::after { transform: scaleX(0); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------ marquee ----- */
+.marquee { display: flex; overflow: hidden; white-space: nowrap; }
+.marquee > * { flex-shrink: 0; animation: marquee var(--speed, 18s) linear infinite; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .marquee > * { animation: none; } }
+
+/* ------------------------------------------------------ CTA (underline) --- */
+.cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; padding-bottom: 14px; position: relative; min-width: 210px; }
+.cta::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform-origin: left; transition: transform 0.6s var(--ease); }
+.cta:hover::after { transform: scaleX(0.35); }
+.cta svg { transition: transform 0.6s var(--ease); }
+.cta:hover svg { transform: translateX(6px); }
+
+/* underline-grow link */
+.link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.5s var(--ease);
+}
+.link:hover, .link[aria-current="page"] { background-size: 100% 1px; }
+
+/* Work tile hover: frame tightens, picture pushes in */
+.tile-media { clip-path: inset(0); transition: clip-path 0.8s var(--ease); }
+.tile-media > * { transition: transform 1.2s var(--ease), opacity 0.6s var(--ease); }
+.tile:hover .tile-media { clip-path: inset(2.5% 2.5% 2.5% 2.5%); }
+.tile:hover .tile-media > * { transform: scale(1.08); }
+
+/* Pinned horizontal track: the section sticks while cards slide sideways with vertical scroll.
+   Without scroll-timeline support (or on phones) it's a normal swipeable row. */
+.hpin-sticky { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+.hpin-track > * { scroll-snap-align: start; }
+@supports (animation-timeline: view()) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .hpin { height: 240vh; view-timeline: --hpin block; }
+    .hpin-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; }
+    .hpin-track {
+      width: max-content;
+      animation: htrack linear both;
+      animation-timeline: --hpin;
+      animation-range: contain 5% contain 95%;
+    }
+    @keyframes htrack { to { transform: translateX(calc(-100% + 100vw)); } }
+  }
 }
