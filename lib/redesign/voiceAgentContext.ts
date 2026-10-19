@@ -1,0 +1,11 @@
+"use client";
+
+import { createContext } from "react";
+import type useVoiceAgentController from "./useVoiceAgentController";
+
+type VoiceControls = Pick<
+  ReturnType<typeof useVoiceAgentController>,
+  "status" | "isOpen" | "open" | "toggle"
+>;
+const voiceAgentContext = createContext<VoiceControls | null>(null);
+export default voiceAgentContext;
