@@ -14,6 +14,7 @@ export default function ServiceVisual({
       className={`relative overflow-hidden ${thumbnail ? "aspect-square w-28 shrink-0 md:w-45" : "h-90 w-full md:h-service-art"}`}
     >
       <Image
+        data-motion-zoom=""
         src={src}
         alt=""
         fill

@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import navigation from "@/lib/redesign/data/navigation.data";
 import BrandLogo from "./BrandLogo";
+import MobileMenu from "./MobileMenu";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header className="absolute inset-x-0 top-0 z-40 px-gutter py-5 md:px-10">
-      <div className="relative mx-auto flex h-12 max-w-studio items-center justify-between">
+      <div data-motion="fade" className="relative mx-auto flex h-12 max-w-studio items-center justify-between">
         <nav aria-label="Work and services" className="hidden gap-10 md:flex">
           {navigation.slice(0, 2).map((link) => (
             <Link
@@ -53,25 +54,7 @@ export default function SiteHeader() {
           {menuOpen ? "Close" : "Menu"}
         </button>
       </div>
-      {menuOpen && (
-        <nav
-          id="site-mobile-menu"
-          aria-label="Main menu"
-          className="absolute inset-x-0 top-20 flex flex-col border-b border-studio-line bg-studio-bg px-gutter py-6 md:hidden"
-        >
-          {navigation.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              aria-current={pathname.startsWith(link.href) ? "page" : undefined}
-              className={`border-t border-studio-line py-4 text-2xl hover:text-studio-orange ${pathname.startsWith(link.href) ? "text-studio-orange" : ""}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      )}
+      <MobileMenu open={menuOpen} pathname={pathname} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }

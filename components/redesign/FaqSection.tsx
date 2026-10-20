@@ -23,7 +23,7 @@ export default function FaqSection({ label, title, intro, items }: Props) {
         </div>
         <div className="lg:col-span-2">
           {items.map((item) => (
-            <div key={item.question} className="space-y-4 border-t border-studio-line py-7">
+            <div data-motion="row" key={item.question} className="space-y-4 border-t border-studio-line py-7">
               <h3 className="text-2xl leading-8 tracking-tight md:text-3xl">{item.question}</h3>
               <p className="max-w-4xl text-lg leading-7 text-studio-muted md:text-xl">{item.answer}</p>
             </div>

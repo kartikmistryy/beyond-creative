@@ -6,7 +6,6 @@ import type VoiceAgentApi from "./voiceAgentApi";
 export default function useVoiceAgentController(host: RefObject<HTMLDivElement | null>) {
   const initialized = useRef(false);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
-  const [isOpen, setIsOpen] = useState(false);
   function fail() {
     setStatus("error");
   }
@@ -31,10 +30,7 @@ export default function useVoiceAgentController(host: RefObject<HTMLDivElement |
     function sync() {
       const launcher = element?.querySelector<HTMLElement>('[aria-label="Open chat"]');
       const close = element?.querySelector<HTMLElement>('[aria-label="Close chat"]');
-      // Keep the provider's controls intact; the branded launcher activates its native open button.
-      if (launcher && !launcher.classList.contains("hidden!")) launcher.classList.add("hidden!");
       if (launcher || close) setStatus("ready");
-      setIsOpen(Boolean(close?.getClientRects().length));
     }
     const observer = new MutationObserver(sync);
     observer.observe(element, { childList: true, subtree: true, attributes: true });
@@ -53,11 +49,5 @@ export default function useVoiceAgentController(host: RefObject<HTMLDivElement |
   function open() {
     host.current?.querySelector<HTMLElement>('[aria-label="Open chat"]')?.click();
   }
-  function toggle() {
-    const close = host.current?.querySelector<HTMLElement>('[aria-label="Close chat"]');
-    if (close?.getClientRects().length) close.click();
-    else open();
-  }
-
-  return { status, isOpen, open, toggle, initialize, fail };
+  return { status, open, initialize, fail };
 }

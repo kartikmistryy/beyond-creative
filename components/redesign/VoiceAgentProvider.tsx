@@ -5,7 +5,8 @@ import { useRef, type ReactNode } from "react";
 import voiceAgentContext from "@/lib/redesign/voiceAgentContext";
 import useVoiceAgentController from "@/lib/redesign/useVoiceAgentController";
 import voiceAgent from "@/lib/redesign/data/voiceAgent.data";
-import VoiceLauncher from "./VoiceLauncher";
+import VoiceAgentFallback from "./VoiceAgentFallback";
+import styles from "./VoiceAgentProvider.module.css";
 
 export default function VoiceAgentProvider({ children }: { children: ReactNode }) {
   const host = useRef<HTMLDivElement>(null);
@@ -14,8 +15,8 @@ export default function VoiceAgentProvider({ children }: { children: ReactNode }
     <voiceAgentContext.Provider value={controller}>
       <link rel="stylesheet" href={voiceAgent.stylesheet} />
       {children}
-      <div ref={host} data-chat-widget="" />
-      <VoiceLauncher />
+      <div ref={host} data-chat-widget="" className={styles.widgetHost} />
+      <VoiceAgentFallback />
       <Script
         id="beyond-voice-agent"
         src={voiceAgent.script}

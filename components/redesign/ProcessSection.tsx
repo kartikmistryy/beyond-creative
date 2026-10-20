@@ -14,7 +14,7 @@ export default function ProcessSection({ label, title, steps }: Props) {
           className={`grid gap-10 sm:grid-cols-2 ${steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"}`}
         >
           {steps.map((step, index) => (
-            <li key={step.title} className="space-y-6">
+            <li data-motion="rise" key={step.title} className="space-y-6">
               <p className="font-studio-mono text-label text-studio-orange">
                 {String(index + 1).padStart(2, "0")}
               </p>

@@ -15,20 +15,23 @@ export default function ProjectCard({
 }) {
   return (
     <Link
+      data-motion-hover="project"
       href={`/projects/${project.slug}`}
       className="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-studio-orange"
     >
       <div
+        data-motion="image"
         className={`relative overflow-hidden ${editorial ? (tall ? "aspect-work-tall" : "aspect-work-wide") : "aspect-work-equal"}`}
       >
         <Image
+          data-motion-zoom=""
           src={project.gallery[0].src}
           alt={project.gallery[0].alt}
           fill
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : "auto"}
           sizes="(max-width: 767px) 100vw, 55vw"
-          className={`object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none ${project.slug === "beta-panels" ? "object-top" : ""}`}
+          className={`object-cover ${project.slug === "beta-panels" ? "object-top" : ""}`}
         />
         <div className="absolute inset-0 bg-linear-to-t from-studio-bg/85 via-transparent to-transparent" />
         <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 md:inset-x-6 md:bottom-6">
@@ -42,7 +45,7 @@ export default function ProjectCard({
             />
             <h3 className="text-xl tracking-tight md:text-2xl">{project.title}</h3>
           </div>
-          <span aria-hidden="true" className="text-2xl">
+          <span data-motion-arrow="" aria-hidden="true" className="text-2xl">
             ↗
           </span>
         </div>

@@ -12,6 +12,7 @@ export default function VoiceButton({
   const { open, status } = useVoiceAgent();
   return (
     <button
+      data-motion-hover="action"
       type="button"
       onClick={open}
       disabled={status !== "ready"}
@@ -22,7 +23,7 @@ export default function VoiceButton({
       }
     >
       {status === "error" ? "Voice demo unavailable" : children}
-      <span aria-hidden="true">↘</span>
+      <span data-motion-arrow="" aria-hidden="true">↘</span>
     </button>
   );
 }

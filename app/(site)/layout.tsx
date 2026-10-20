@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import SiteHeader from "@/components/redesign/SiteHeader";
 import SiteFooter from "@/components/redesign/SiteFooter";
 import VoiceAgentProvider from "@/components/redesign/VoiceAgentProvider";
+import SiteMotion from "@/components/redesign/SiteMotion";
 import "@/components/redesign/theme.css";
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
@@ -17,9 +18,11 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
-        <SiteHeader />
-        <main id="main-content">{children}</main>
-        <SiteFooter />
+        <SiteMotion>
+          <SiteHeader />
+          <main id="main-content">{children}</main>
+          <SiteFooter />
+        </SiteMotion>
       </VoiceAgentProvider>
     </div>
   );

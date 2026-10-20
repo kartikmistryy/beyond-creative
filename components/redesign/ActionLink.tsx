@@ -12,6 +12,7 @@ export default function ActionLink({
 }) {
   return (
     <Link
+      data-motion-hover="action"
       href={href}
       className={
         prominent
@@ -20,7 +21,7 @@ export default function ActionLink({
       }
     >
       {children}
-      <span aria-hidden="true">↗</span>
+      <span data-motion-arrow="" aria-hidden="true">↗</span>
     </Link>
   );
 }

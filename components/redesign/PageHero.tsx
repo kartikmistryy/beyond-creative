@@ -19,7 +19,7 @@ export default function PageHero({ label, title, intro, anchor, anchorLabel }: P
           >
             {anchorLabel} ↓
           </a>
-          <div className="max-w-lg space-y-6 lg:pb-6">
+          <div data-motion="rise" className="max-w-lg space-y-6 lg:pb-6">
             <p className="text-xl leading-8 tracking-tight text-studio-muted md:text-2xl">{intro}</p>
             <ActionLink href="/contact">Book a discovery call</ActionLink>
           </div>

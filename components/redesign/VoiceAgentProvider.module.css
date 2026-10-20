@@ -1,0 +1,13 @@
+@reference "./theme.css";
+
+.widgetHost :global([aria-label="Open chat"]) {
+  @apply bg-none! bg-studio-orange! shadow-xl! shadow-studio-orange/30!;
+}
+
+.widgetHost :global([aria-label="Open chat"])::before {
+  @apply bg-none! bg-studio-orange/50!;
+}
+
+.widgetHost :global([aria-label="Open chat"]):hover {
+  @apply border-studio-orange!;
+}

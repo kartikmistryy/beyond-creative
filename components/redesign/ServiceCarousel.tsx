@@ -56,6 +56,8 @@ export default function ServiceCarousel({ services, label, title, subtitle }: Pr
         >
           {services.map((service, index) => (
             <Link
+              data-motion="rise"
+              data-motion-hover="service"
               key={service.slug}
               href={service.href}
               className="group relative flex h-160 w-80 shrink-0 snap-start flex-col justify-between overflow-hidden border border-studio-line p-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-studio-orange md:h-service-height md:w-service-card"
@@ -71,7 +73,7 @@ export default function ServiceCarousel({ services, label, title, subtitle }: Pr
                   <h3 className="h-20 whitespace-pre-line text-3xl leading-10 tracking-heading md:text-4xl">
                     {service.title}
                   </h3>
-                  <span aria-hidden="true" className="pt-2 text-xl">
+                  <span data-motion-arrow="" aria-hidden="true" className="pt-2 text-xl">
                     ↗
                   </span>
                 </div>

@@ -8,7 +8,7 @@ export default function AboutFounder({ content }: { content: typeof about.founde
       <div className="mx-auto max-w-studio space-y-12">
         <SectionLabel>{content.label}</SectionLabel>
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-18">
-          <figure className="lg:w-2/5 lg:shrink-0">
+          <figure data-motion="image" className="lg:w-2/5 lg:shrink-0">
             <div className="mx-auto max-w-founder space-y-4">
               <Image
                 src={content.image}
@@ -25,7 +25,7 @@ export default function AboutFounder({ content }: { content: typeof about.founde
           </figure>
           <div className="flex-1 space-y-8">
             <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
-            <p className="max-w-2xl whitespace-pre-line text-lg leading-8 text-studio-muted md:text-copy">
+            <p data-motion="rise" className="max-w-2xl whitespace-pre-line text-lg leading-8 text-studio-muted md:text-copy">
               {content.body}
             </p>
           </div>

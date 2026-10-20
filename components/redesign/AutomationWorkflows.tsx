@@ -11,11 +11,11 @@ export default function AutomationWorkflows({ content }: { content: typeof autom
             <span className="block">{content.title[0]}</span>{" "}
             <span className="block text-studio-orange">{content.title[1]}</span>
           </h2>
-          <p className="text-xl leading-8 text-studio-muted md:text-2xl">{content.body}</p>
+          <p data-motion="rise" className="text-xl leading-8 text-studio-muted md:text-2xl">{content.body}</p>
         </div>
         <div className="grid gap-10 lg:grid-cols-3 lg:gap-16">
           {content.items.map((item) => (
-            <div key={item.title} className="space-y-5 border-t border-studio-line pt-6">
+            <div data-motion="rise" key={item.title} className="space-y-5 border-t border-studio-line pt-6">
               <h3 className="text-3xl leading-9 tracking-tight">{item.title}</h3>
               <p className="text-xl leading-7 text-studio-muted">{item.body}</p>
             </div>

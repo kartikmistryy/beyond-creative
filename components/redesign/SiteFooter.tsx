@@ -26,6 +26,7 @@ export default function SiteFooter() {
           </div>
         )}
         <div
+          data-motion="stagger"
           className={`grid gap-12 md:grid-cols-4 lg:grid-cols-6 ${content.compact ? "" : "border-t border-studio-line pt-8"}`}
         >
           <div className="space-y-6 md:col-span-2 lg:col-span-4">

@@ -12,13 +12,13 @@ export default function AutomationHero({ content }: { content: typeof automation
           <span className="block">{content.title[0]}</span>{" "}
           <span className="block text-studio-orange">{content.title[1]}</span>
         </h1>
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <div data-motion="stagger" className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <p className="font-studio-mono text-label">{content.tagline}</p>
           <p className="max-w-xl text-xl leading-8 tracking-tight text-studio-muted md:text-2xl">
             {content.intro}
           </p>
         </div>
-        <div className="flex justify-end">
+        <div data-motion="rise" className="flex justify-end">
           <div className="flex w-full max-w-xl flex-wrap items-center gap-8">
             <VoiceButton prominent>Try our AI receptionist</VoiceButton>
             <ActionLink href="/contact">Book a discovery call</ActionLink>

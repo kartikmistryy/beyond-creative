@@ -17,6 +17,7 @@ export default function AutomationCapabilities({ content }: { content: typeof au
         <ol>
           {content.rows.map((row, index) => (
             <li
+              data-motion="row"
               key={row.title}
               className="grid gap-6 border-t border-studio-line py-8 md:grid-cols-12 md:gap-10 lg:gap-18"
             >

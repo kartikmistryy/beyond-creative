@@ -18,6 +18,8 @@ export default function ServiceList({
     <ol onMouseLeave={() => setActive(firstActive ? 0 : null)}>
       {services.map((service, index) => (
         <li
+          data-motion="row"
+          data-motion-hover="service"
           key={service.slug}
           id={service.slug}
           onMouseEnter={() => setActive(index)}

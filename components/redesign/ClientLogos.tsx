@@ -7,7 +7,7 @@ export default function ClientLogos({ projects }: { projects: typeof previews })
     <section className="px-gutter pb-section">
       <div className="mx-auto max-w-studio space-y-10 border-t border-studio-line pt-8">
         <SectionLabel>Brands we’ve worked with</SectionLabel>
-        <div className="grid grid-cols-2 items-center gap-10 md:grid-cols-4">
+        <div data-motion="stagger" className="grid grid-cols-2 items-center gap-10 md:grid-cols-4">
           {projects.map((project) => (
             <a
               key={project.slug}

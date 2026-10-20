@@ -10,7 +10,7 @@ export default function HomeStudio({ content }: { content: typeof home.studio })
           <span className="block">{content.title[0]}</span>{" "}
           <span className="block text-studio-orange">{content.title[1]}</span>
         </h2>
-        <div className="grid gap-8 pt-4 lg:grid-cols-3 lg:gap-18">
+        <div data-motion="stagger" className="grid gap-8 pt-4 lg:grid-cols-3 lg:gap-18">
           <p className="whitespace-pre-line font-studio-mono text-label text-studio-muted">
             {content.signature}
           </p>

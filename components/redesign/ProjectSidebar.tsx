@@ -24,21 +24,21 @@ export default function ProjectSidebar({
           Project {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </SectionLabel>
         <h1 className="text-4xl leading-tight tracking-heading xl:text-5xl">{project.title}</h1>
-        <p className="text-copy text-studio-muted">{project.summary}</p>
+        <p data-motion="rise" className="text-copy text-studio-muted">{project.summary}</p>
       </header>
       <div className="space-y-3 border-t border-studio-line pt-6">
         <SectionLabel>Services</SectionLabel>
-        <ul className="text-lg leading-7 text-studio-muted">
+        <ul data-motion="stagger" className="text-lg leading-7 text-studio-muted">
           {project.services.map((service) => (
             <li key={service}>{service}</li>
           ))}
         </ul>
       </div>
-      <div className="space-y-3">
+      <div data-motion="rise" className="space-y-3">
         <SectionLabel>The project</SectionLabel>
         <p className="text-lg leading-7 text-studio-muted">{project.description}</p>
       </div>
-      <div className="space-y-3">
+      <div data-motion="rise" className="space-y-3">
         <SectionLabel>The approach</SectionLabel>
         <p className="text-lg leading-7 text-studio-muted">{project.approach}</p>
       </div>

@@ -5,6 +5,7 @@ export default function CmsMedia({ media }: { media: Media | null | undefined })
   if (!media?.url) return null;
   return media.type === "video" ? (
     <video
+      data-motion="image"
       src={media.url}
       controls
       playsInline
@@ -14,6 +15,7 @@ export default function CmsMedia({ media }: { media: Media | null | undefined })
     />
   ) : (
     <img
+      data-motion="image"
       src={media.url}
       alt={media.alt || ""}
       loading="lazy"

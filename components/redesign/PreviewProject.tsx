@@ -14,7 +14,7 @@ export default function PreviewProject({
         <ProjectSidebar project={content.project} index={content.index} total={content.total} />
         <div className="flex min-w-0 flex-col items-start gap-6 lg:col-span-9">
           {content.project.gallery.map((image, index) => (
-            <figure key={image.src} className={image.portrait ? "w-full md:w-2/3" : "w-full"}>
+            <figure data-motion="image" key={image.src} className={image.portrait ? "w-full md:w-2/3" : "w-full"}>
               <Image
                 src={image.src}
                 alt={image.alt}

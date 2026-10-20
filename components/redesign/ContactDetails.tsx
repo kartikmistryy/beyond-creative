@@ -5,7 +5,7 @@ import SectionLabel from "./SectionLabel";
 export default function ContactDetails({ content }: { content: typeof contact }) {
   return (
     <section className="grid lg:min-h-225 lg:grid-cols-2">
-      <div className="relative h-112 lg:h-auto">
+      <div data-motion="image" className="relative h-112 overflow-hidden lg:h-auto">
         <Image
           src={content.image}
           alt="Flinders Street Station in Melbourne"
@@ -37,9 +37,9 @@ export default function ContactDetails({ content }: { content: typeof contact })
           <h1 className="whitespace-pre-line text-6xl leading-none tracking-display xl:text-7xl">
             {content.title}
           </h1>
-          <p className="whitespace-pre-line text-xl leading-7 text-studio-muted">{content.intro}</p>
+          <p data-motion="rise" className="whitespace-pre-line text-xl leading-7 text-studio-muted">{content.intro}</p>
         </div>
-        <div className="space-y-8 border-t border-studio-line pt-8">
+        <div data-motion="stagger" className="space-y-8 border-t border-studio-line pt-8">
           <div className="space-y-3">
             <SectionLabel>New business</SectionLabel>
             <a

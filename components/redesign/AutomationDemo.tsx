@@ -8,7 +8,7 @@ export default function AutomationDemo({ content }: { content: typeof automation
   return (
     <section className="px-gutter pb-section">
       <div className="mx-auto flex max-w-studio flex-col items-center gap-12 lg:flex-row lg:gap-18">
-        <div className="relative aspect-work-equal w-full lg:w-5/12 lg:shrink-0">
+        <div data-motion="image" className="relative aspect-work-equal w-full overflow-hidden lg:w-5/12 lg:shrink-0">
           <Image
             src={content.image}
             alt="Rotary telephone with broken ASCII streaks"
@@ -20,8 +20,8 @@ export default function AutomationDemo({ content }: { content: typeof automation
         <div className="flex-1 space-y-6">
           <SectionLabel>{content.label}</SectionLabel>
           <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
-          <p className="max-w-2xl text-lg leading-8 text-studio-muted md:text-copy">{content.body}</p>
-          <ol className="space-y-3 border-y border-studio-line py-5">
+          <p data-motion="rise" className="max-w-2xl text-lg leading-8 text-studio-muted md:text-copy">{content.body}</p>
+          <ol data-motion="stagger" className="space-y-3 border-y border-studio-line py-5">
             {content.steps.map((step) => (
               <li key={step} className="font-studio-mono text-xs leading-5 text-studio-muted">
                 {step}

@@ -5,7 +5,7 @@ import type useVoiceAgentController from "./useVoiceAgentController";
 
 type VoiceControls = Pick<
   ReturnType<typeof useVoiceAgentController>,
-  "status" | "isOpen" | "open" | "toggle"
+  "status" | "open"
 >;
 const voiceAgentContext = createContext<VoiceControls | null>(null);
 export default voiceAgentContext;
