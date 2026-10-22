@@ -10,7 +10,7 @@ npm run dev -- --port 3001
 
 Public routes: `/`, `/about`, `/services`, `/projects`, `/contact`, and `/services/ai-business-automation`.
 `/ai-automation` redirects permanently to the new service URL.
-The four Paper project templates live under `/projects/moti-mahal`, `/projects/indian-care`, `/projects/beta-panels`, and `/projects/the-travel-boat`.
+The three Paper project templates live under `/projects/moti-mahal`, `/projects/indian-care`, and `/projects/beta-panels`.
 Legacy CMS project slugs still resolve through their original data loader.
 
 ## Structure

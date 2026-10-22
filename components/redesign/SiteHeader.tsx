@@ -19,7 +19,7 @@ export default function SiteHeader() {
               key={link.href}
               href={link.href}
               aria-current={pathname.startsWith(link.href) ? "page" : undefined}
-              className={`py-2 text-lg underline-offset-8 hover:underline ${pathname.startsWith(link.href) ? "underline" : ""}`}
+              className={`relative py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:ease-out hover:after:origin-left hover:after:scale-x-100 text-lg ${pathname.startsWith(link.href) ? "after:scale-x-100" : ""}`}
             >
               {link.label}
             </Link>
@@ -38,7 +38,7 @@ export default function SiteHeader() {
               key={link.href}
               href={link.href}
               aria-current={pathname.startsWith(link.href) ? "page" : undefined}
-              className={`py-2 text-lg underline-offset-8 hover:underline ${pathname.startsWith(link.href) ? "underline" : ""} ${link.href === "/contact" ? "text-studio-orange" : ""}`}
+              className={`relative py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:ease-out hover:after:origin-left hover:after:scale-x-100 text-lg ${pathname.startsWith(link.href) ? "after:scale-x-100" : ""} ${link.href === "/contact" ? "text-studio-orange" : ""}`}
             >
               {link.label}
             </Link>

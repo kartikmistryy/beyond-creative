@@ -20,7 +20,7 @@ const about = {
     name: "Rishabh",
     role: "Founder & Creative Director",
     title: "One point of contact.\nA team built for\nyour brief.",
-    body: "Rishabh leads every client relationship directly and sets the creative and strategic direction.\n\nOur in-house editor and freelance specialists bring the craft—across branding, content, web, performance and AI. You work with the person steering your account, from the first conversation onwards.",
+    body: "Rishabh leads every client relationship directly and sets the creative and strategic direction.\n\nOur in-house editor and freelance specialists bring the craft \u2014 across branding, content, web, performance and AI. You work with the person steering your account, from the first conversation onwards.",
     image: "/images/paper/27H9AP0AYEN620Y4HX90SQCCAC.webp",
   },
   capabilities: {

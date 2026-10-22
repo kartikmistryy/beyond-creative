@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type automation from "@/lib/redesign/data/automation.data";
 import voiceAgent from "@/lib/redesign/data/voiceAgent.data";
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 import VoiceButton from "./VoiceButton";
 
@@ -8,18 +9,20 @@ export default function AutomationDemo({ content }: { content: typeof automation
   return (
     <section className="px-gutter pb-section">
       <div className="mx-auto flex max-w-studio flex-col items-center gap-12 lg:flex-row lg:gap-18">
-        <div data-motion="image" className="relative aspect-work-equal w-full overflow-hidden lg:w-5/12 lg:shrink-0">
+        <div data-motion="image" data-motion-parallax="" className="relative aspect-work-equal w-full overflow-hidden lg:w-5/12 lg:shrink-0">
           <Image
             src={content.image}
             alt="Rotary telephone with broken ASCII streaks"
             fill
             sizes="(max-width: 1023px) 100vw, 45vw"
-            className="object-cover"
+            className="scale-125 object-cover"
           />
         </div>
         <div className="flex-1 space-y-6">
           <SectionLabel>{content.label}</SectionLabel>
-          <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
+          <h2 className="text-heading tracking-heading">
+            <Lines text={content.title} />
+          </h2>
           <p data-motion="rise" className="max-w-2xl text-lg leading-8 text-studio-muted md:text-copy">{content.body}</p>
           <ol data-motion="stagger" className="space-y-3 border-y border-studio-line py-5">
             {content.steps.map((step) => (

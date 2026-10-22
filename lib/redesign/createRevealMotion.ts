@@ -1,5 +1,6 @@
 import { animate, inView, stagger } from "framer-motion";
 import motion from "./data/motion.data";
+import { isSiteReady, onSiteReady } from "./siteReady";
 
 export default function createRevealMotion(root: HTMLElement) {
   const cleanups: (() => void)[] = [];
@@ -9,23 +10,25 @@ export default function createRevealMotion(root: HTMLElement) {
     const kind = element.dataset.motion;
     if (kind === "hero-image") return;
     const heading = element.matches("h1, h2");
-    const preset = motion.presets[
-      heading ? "heading" : kind === "image" ? "image" : kind === "row" ? "row" : kind === "fade" ? "fade" : "rise"
-    ];
+    const named = kind && kind in motion.presets ? (kind as keyof typeof motion.presets) : "rise";
+    const preset = motion.presets[heading ? "heading" : named];
     const lines = heading ? Array.from(element.querySelectorAll<HTMLElement>(":scope > span")) : [];
-    const items = lines.length ? lines : kind === "stagger" ? Array.from(element.children) : [element];
+    const grouped = kind === "stagger" || kind === "words";
+    const items = lines.length ? lines : grouped ? Array.from(element.children) : [element];
     if (!items.length) return;
     const originals = items.map((item) => item.getAttribute("style"));
     let active: ReturnType<typeof animate> | undefined;
     let started = false;
     const reveal = () => {
       if (started) return;
+      // Hold above-the-fold reveals until the preloader curtain starts lifting.
+      if (!isSiteReady()) return void cleanups.push(onSiteReady(reveal));
       started = true;
       element.dataset.motionState = "visible";
       active = animate(items, preset.to, {
         ...motion.reveal,
-        duration: compact ? 0.7 : heading || kind === "image" ? 1.2 : 0.85,
-        delay: stagger(heading ? 0.14 : 0.09),
+        duration: kind === "words" ? 0.6 : compact ? 0.7 : heading || kind === "image" ? 1.2 : 0.85,
+        delay: stagger(heading ? 0.14 : kind === "words" ? 0.025 : 0.09),
       });
     };
     // Content stays visible in server HTML; only hydrated, observed elements are prepared.

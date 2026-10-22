@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type about from "@/lib/redesign/data/about.data";
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 
 export default function AboutFounder({ content }: { content: typeof about.founder }) {
@@ -24,7 +25,9 @@ export default function AboutFounder({ content }: { content: typeof about.founde
             </div>
           </figure>
           <div className="flex-1 space-y-8">
-            <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
+            <h2 className="text-heading tracking-heading">
+            <Lines text={content.title} />
+          </h2>
             <p data-motion="rise" className="max-w-2xl whitespace-pre-line text-lg leading-8 text-studio-muted md:text-copy">
               {content.body}
             </p>

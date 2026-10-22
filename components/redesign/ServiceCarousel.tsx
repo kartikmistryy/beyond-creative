@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type servicesData from "@/lib/redesign/data/services.data";
 import serviceArtwork from "@/lib/redesign/serviceArtwork";
 import useCarousel from "@/lib/redesign/useCarousel";
@@ -32,23 +33,24 @@ export default function ServiceCarousel({ services, label, title, subtitle }: Pr
                 type="button"
                 aria-label="Previous services"
                 onClick={() => scroll(-1)}
-                className="flex size-12 items-center justify-center border border-studio-line text-2xl hover:border-studio-text"
+                className="flex size-12 items-center justify-center border border-studio-line transition-colors hover:bg-studio-text hover:text-studio-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-studio-orange"
               >
-                ←
+                <ArrowLeft className="size-5" strokeWidth={1.5} aria-hidden="true" />
               </button>
               <button
                 type="button"
                 aria-label="Next services"
                 onClick={() => scroll(1)}
-                className="flex size-12 items-center justify-center border border-studio-line text-2xl hover:border-studio-text"
+                className="flex size-12 items-center justify-center border border-studio-line transition-colors hover:bg-studio-text hover:text-studio-bg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-studio-orange"
               >
-                →
+                <ArrowRight className="size-5" strokeWidth={1.5} aria-hidden="true" />
               </button>
             </div>
           </div>
         </div>
         <div
           ref={ref}
+          data-motion="stagger"
           role="region"
           tabIndex={0}
           aria-label="Seven services, scroll horizontally"
@@ -56,7 +58,6 @@ export default function ServiceCarousel({ services, label, title, subtitle }: Pr
         >
           {services.map((service, index) => (
             <Link
-              data-motion="rise"
               data-motion-hover="service"
               key={service.slug}
               href={service.href}

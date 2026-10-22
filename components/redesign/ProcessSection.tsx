@@ -1,3 +1,4 @@
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 
 type Props = { label: string; title: string; steps: readonly { title: string; body: string }[] };
@@ -8,7 +9,9 @@ export default function ProcessSection({ label, title, steps }: Props) {
       <div className="mx-auto max-w-studio space-y-16">
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-18">
           <SectionLabel>{label}</SectionLabel>
-          <h2 className="whitespace-pre-line text-heading tracking-heading lg:col-span-2">{title}</h2>
+          <h2 className="text-heading tracking-heading lg:col-span-2">
+            <Lines text={title} />
+          </h2>
         </div>
         <ol
           className={`grid gap-10 sm:grid-cols-2 ${steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"}`}

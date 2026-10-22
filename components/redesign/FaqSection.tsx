@@ -1,3 +1,4 @@
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 
 type Props = {
@@ -16,8 +17,8 @@ export default function FaqSection({ label, title, intro, items }: Props) {
       <div className="mx-auto grid max-w-studio gap-12 lg:grid-cols-3 lg:gap-18">
         <div className="space-y-7">
           <SectionLabel>{label}</SectionLabel>
-          <h2 className="whitespace-pre-line text-heading tracking-heading">
-            {typeof title === "string" ? title : title.join("\n")}
+          <h2 className="text-heading tracking-heading">
+            <Lines text={typeof title === "string" ? title : title.join("\n")} />
           </h2>
           {intro && <p className="max-w-sm text-xl leading-7 text-studio-muted">{intro}</p>}
         </div>

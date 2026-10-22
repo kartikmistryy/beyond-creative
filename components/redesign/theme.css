@@ -47,3 +47,12 @@
   --aspect-service-banner: 445 / 300;
   --aspect-project-hero: 1040 / 650;
 }
+
+@theme {
+  --animate-marquee: marquee 32s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

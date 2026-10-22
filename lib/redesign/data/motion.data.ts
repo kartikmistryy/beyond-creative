@@ -11,9 +11,10 @@ const motion = {
       to: { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)" },
     },
     image: {
-      from: { opacity: 0, y: 32, clipPath: "inset(0% 0% 100% 0%)" },
-      to: { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)" },
+      from: { opacity: 0, y: 32, scale: 1.08, clipPath: "inset(0% 0% 100% 0%)" },
+      to: { opacity: 1, y: 0, scale: 1, clipPath: "inset(0% 0% 0% 0%)" },
     },
+    words: { from: { opacity: 0.12 }, to: { opacity: 1 } },
     rise: { from: { opacity: 0, y: 36 }, to: { opacity: 1, y: 0 } },
     row: { from: { opacity: 0, x: -32 }, to: { opacity: 1, x: 0 } },
     fade: { from: { opacity: 0 }, to: { opacity: 1 } },

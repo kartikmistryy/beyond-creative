@@ -1,11 +1,12 @@
 import Image from "next/image";
 import type contact from "@/lib/redesign/data/contact.data";
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 
 export default function ContactDetails({ content }: { content: typeof contact }) {
   return (
     <section className="grid lg:min-h-225 lg:grid-cols-2">
-      <div data-motion="image" className="relative h-112 overflow-hidden lg:h-auto">
+      <div data-motion="image" data-motion-parallax="" className="relative h-112 overflow-hidden lg:h-auto">
         <Image
           src={content.image}
           alt="Flinders Street Station in Melbourne"
@@ -13,7 +14,7 @@ export default function ContactDetails({ content }: { content: typeof contact })
           loading="eager"
           fetchPriority="high"
           sizes="(max-width: 1023px) 100vw, 50vw"
-          className="object-cover"
+          className="scale-125 object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-studio-bg/70 via-studio-bg/10 to-studio-bg/20" />
         <div className="absolute inset-x-gutter bottom-10 space-y-3">
@@ -34,8 +35,8 @@ export default function ContactDetails({ content }: { content: typeof contact })
       <div className="space-y-12 px-gutter py-16 lg:px-16 lg:pb-12 lg:pt-35">
         <div className="space-y-6">
           <SectionLabel>{content.label}</SectionLabel>
-          <h1 className="whitespace-pre-line text-6xl leading-none tracking-display xl:text-7xl">
-            {content.title}
+          <h1 className="text-6xl leading-none tracking-display xl:text-7xl">
+            <Lines text={content.title} />
           </h1>
           <p data-motion="rise" className="whitespace-pre-line text-xl leading-7 text-studio-muted">{content.intro}</p>
         </div>

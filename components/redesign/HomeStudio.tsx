@@ -1,5 +1,6 @@
 import type home from "@/lib/redesign/data/home.data";
 import SectionLabel from "./SectionLabel";
+import Words from "./Words";
 
 export default function HomeStudio({ content }: { content: typeof home.studio }) {
   return (
@@ -10,12 +11,12 @@ export default function HomeStudio({ content }: { content: typeof home.studio })
           <span className="block">{content.title[0]}</span>{" "}
           <span className="block text-studio-orange">{content.title[1]}</span>
         </h2>
-        <div data-motion="stagger" className="grid gap-8 pt-4 lg:grid-cols-3 lg:gap-18">
-          <p className="whitespace-pre-line font-studio-mono text-label text-studio-muted">
+        <div className="grid gap-8 pt-4 lg:grid-cols-3 lg:gap-18">
+          <p data-motion="rise" className="whitespace-pre-line font-studio-mono text-label text-studio-muted">
             {content.signature}
           </p>
-          <p className="max-w-reading text-xl leading-8 text-studio-muted lg:col-span-2 lg:text-2xl">
-            {content.body}
+          <p data-motion="words" className="max-w-reading text-xl leading-8 text-studio-muted lg:col-span-2 lg:text-2xl">
+            <Words text={content.body} />
           </p>
         </div>
       </div>

@@ -11,3 +11,8 @@
 .widgetHost :global([aria-label="Open chat"]):hover {
   @apply border-studio-orange!;
 }
+
+/* Keep the widget (z-index 99999) out of sight until the preloader curtain has lifted. */
+:global(html:not([data-site-ready="true"])) .widgetHost {
+  @apply invisible;
+}

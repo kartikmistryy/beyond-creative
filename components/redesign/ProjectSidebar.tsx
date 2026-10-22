@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import type previews from "@/lib/redesign/data/projectPreviews.data";
 import SectionLabel from "./SectionLabel";
 
@@ -15,9 +16,10 @@ export default function ProjectSidebar({
     <aside className="space-y-7 self-start lg:sticky lg:top-8 lg:col-span-3" aria-label="Project information">
       <Link
         href="/projects"
-        className="inline-flex min-h-11 items-center font-studio-mono text-label uppercase hover:text-studio-orange"
+        className="inline-flex min-h-11 items-center gap-2 font-studio-mono text-label uppercase hover:text-studio-orange"
       >
-        ← All work
+        <ArrowLeft className="size-4" strokeWidth={1.5} aria-hidden="true" />
+        All work
       </Link>
       <header className="space-y-4">
         <SectionLabel>

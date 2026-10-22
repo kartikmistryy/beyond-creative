@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import type loadCmsProject from "@/lib/redesign/loadCmsProject";
 import CmsMedia from "./CmsMedia";
 import CmsGalleryBlock from "./CmsGalleryBlock";
@@ -14,8 +15,12 @@ export default function CmsProject({
     <article className="px-gutter pb-section pt-36">
       <div className="mx-auto grid max-w-studio gap-11 lg:grid-cols-12">
         <aside className="space-y-7 self-start lg:sticky lg:top-8 lg:col-span-3">
-          <Link href="/projects" className="font-studio-mono text-label uppercase hover:text-studio-orange">
-            ← All work
+          <Link
+            href="/projects"
+            className="inline-flex min-h-11 items-center gap-2 font-studio-mono text-label uppercase hover:text-studio-orange"
+          >
+            <ArrowLeft className="size-4" strokeWidth={1.5} aria-hidden="true" />
+            All work
           </Link>
           <h1 className="text-4xl tracking-heading">{project.title}</h1>
           {project.client && <p className="text-xl">{project.client}</p>}

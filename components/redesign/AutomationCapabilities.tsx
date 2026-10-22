@@ -1,4 +1,5 @@
 import type automation from "@/lib/redesign/data/automation.data";
+import Lines from "./Lines";
 import SectionLabel from "./SectionLabel";
 
 export default function AutomationCapabilities({ content }: { content: typeof automation.capabilities }) {
@@ -8,7 +9,9 @@ export default function AutomationCapabilities({ content }: { content: typeof au
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-18">
           <SectionLabel>{content.label}</SectionLabel>
           <div className="space-y-7 lg:col-span-2">
-            <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
+            <h2 className="text-heading tracking-heading">
+            <Lines text={content.title} />
+          </h2>
             <p className="max-w-reading text-xl leading-8 tracking-tight text-studio-muted md:text-2xl">
               {content.body}
             </p>

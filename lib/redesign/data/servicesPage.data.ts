@@ -7,7 +7,7 @@ const servicesPage = {
     anchor: "all-services",
     anchorLabel: "Explore the services",
   },
-  label: "01—07 / OUR SERVICES",
+  label: "01\u201307 / OUR SERVICES",
   title: "Creative, marketing\nand automation.",
   faq: {
     label: "WORKING TOGETHER",
