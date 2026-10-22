@@ -10,7 +10,7 @@ import SectionLabel from "./SectionLabel";
 export default function SiteFooter() {
   const content = getFooterContent(usePathname());
   return (
-    <footer className="border-t border-studio-line px-gutter pb-28 pt-16 lg:pt-24">
+    <footer className={`border-t border-studio-line px-gutter pt-16 lg:pt-24 ${content.voiceAgent ? "pb-28" : "pb-6"}`}>
       <div className="mx-auto max-w-studio space-y-16">
         {!content.compact && (
           <div className="grid gap-12 lg:grid-cols-3 lg:items-end lg:gap-18">

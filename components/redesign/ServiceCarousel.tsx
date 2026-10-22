@@ -54,7 +54,7 @@ export default function ServiceCarousel({ services, label, title, subtitle }: Pr
           role="region"
           tabIndex={0}
           aria-label="Seven services, scroll horizontally"
-          className="flex snap-x snap-mandatory scroll-px-gutter gap-4 overflow-x-auto overscroll-x-contain px-gutter pb-5"
+          className="flex snap-x snap-mandatory scroll-px-gutter gap-4 overflow-x-auto overscroll-x-contain scrollbar-none px-gutter pb-5"
         >
           {services.map((service, index) => (
             <Link
