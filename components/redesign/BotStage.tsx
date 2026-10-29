@@ -1,15 +1,19 @@
 "use client";
 
+import { useRef } from "react";
 import voiceAgent from "@/lib/redesign/data/voiceAgent.data";
 import useVoiceAgent from "@/lib/redesign/useVoiceAgent";
+import useHideFloatingOrb from "@/lib/redesign/useHideFloatingOrb";
 import BotOrb from "./BotOrb";
 import BotQuestions from "./BotQuestions";
 import VoiceButton from "./VoiceButton";
 
 export default function BotStage({ questions }: { questions: readonly string[] }) {
   const { status, isOpen } = useVoiceAgent();
+  const stage = useRef<HTMLDivElement>(null);
+  useHideFloatingOrb(stage);
   return (
-    <div className="flex flex-col items-center gap-10 lg:w-150 lg:shrink-0">
+    <div ref={stage} className="flex flex-col items-center gap-10 lg:w-150 lg:shrink-0">
       <p aria-live="polite" className="sr-only">
         AI receptionist: {status === "ready" && isOpen ? voiceAgent.listening : voiceAgent.status[status]}
       </p>

@@ -1,7 +1,12 @@
 @reference "./theme.css";
 
 .widgetHost :global([aria-label="Open chat"]) {
-  @apply bg-none! bg-studio-orange! shadow-xl! shadow-studio-orange/30!;
+  @apply bg-none! bg-studio-orange! shadow-xl! shadow-studio-orange/30! transition-all! duration-300!;
+}
+
+/* The demo section has its own orb; only the launcher steps aside, so an open call stays on screen. */
+:global(html[data-demo-visible="true"]) .widgetHost :global([aria-label="Open chat"]) {
+  @apply invisible! scale-75! opacity-0!;
 }
 
 .widgetHost :global([aria-label="Open chat"])::before {
