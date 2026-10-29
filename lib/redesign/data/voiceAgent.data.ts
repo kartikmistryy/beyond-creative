@@ -4,6 +4,8 @@ const voiceAgent = {
   stylesheet: "https://storage.googleapis.com/chatwidgetfiles/chat-widget-betapanels.min.css",
   sampleNotice:
     "Beta Panels sample assistant. The provider records and transcribes conversations. Use sample questions when testing.",
+  status: { loading: "Waking up", ready: "Ready", error: "Voice demo unavailable" },
+  listening: "Listening",
 };
 
 export default voiceAgent;

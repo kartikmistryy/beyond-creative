@@ -9,7 +9,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div
       id="top"
-      className="relative min-h-svh bg-studio-bg font-studio font-normal tracking-normal text-studio-text selection:bg-studio-orange selection:text-studio-bg"
+      className="relative min-h-svh bg-studio-bg font-studio font-medium tracking-normal text-studio-text selection:bg-studio-orange selection:text-studio-bg"
     >
       <a
         href="#main-content"

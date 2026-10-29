@@ -1,61 +1,45 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import type previews from "@/lib/redesign/data/projectPreviews.data";
-import SectionLabel from "./SectionLabel";
+import content from "@/lib/redesign/data/workPage.data";
+import Eyebrow from "./Eyebrow";
 
-export default function ProjectSidebar({
-  project,
-  index,
-  total,
-}: {
-  project: (typeof previews)[number];
-  index: number;
-  total: number;
-}) {
+export default function ProjectSidebar({ project }: { project: (typeof previews)[number] }) {
+  const copy = content.project;
   return (
-    <aside className="space-y-7 self-start lg:sticky lg:top-8 lg:col-span-3" aria-label="Project information">
-      <Link
-        href="/projects"
-        className="inline-flex min-h-11 items-center gap-2 font-studio-mono text-label uppercase hover:text-studio-orange"
-      >
-        <ArrowLeft className="size-4" strokeWidth={1.5} aria-hidden="true" />
-        All work
-      </Link>
-      <header className="space-y-4">
-        <SectionLabel>
-          Project {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-        </SectionLabel>
-        <h1 className="text-4xl leading-tight tracking-heading xl:text-5xl">{project.title}</h1>
-        <p data-motion="rise" className="text-copy text-studio-muted">{project.summary}</p>
-      </header>
-      <div className="space-y-3 border-t border-studio-line pt-6">
-        <SectionLabel>Services</SectionLabel>
-        <ul data-motion="stagger" className="text-lg leading-7 text-studio-muted">
-          {project.services.map((service) => (
-            <li key={service}>{service}</li>
-          ))}
-        </ul>
+    <aside aria-label={copy.details} className="flex shrink-0 flex-col gap-10 self-start lg:sticky lg:top-7 lg:w-110">
+      <div className="flex flex-col gap-3 border-b border-rule pb-7">
+        <Eyebrow index="02">{copy.details}</Eyebrow>
+        <h2 className="pt-4 text-project-title font-light tracking-tight">{project.title}</h2>
+        <p className="text-lg leading-6.5 text-ash">{project.summary}</p>
       </div>
-      <div data-motion="rise" className="space-y-3">
-        <SectionLabel>The project</SectionLabel>
-        <p className="text-lg leading-7 text-studio-muted">{project.description}</p>
+      <dl className="flex flex-col gap-6 border-b border-rule pb-7">
+        <div className="flex flex-col gap-2.5">
+          <dt className="text-label leading-4 text-ash uppercase">{copy.services}</dt>
+          <dd className="text-base leading-6">{project.services.join(" · ")}</dd>
+        </div>
+        <div className="flex flex-col gap-2.5">
+          <dt className="text-label leading-4 text-ash uppercase">{copy.website}</dt>
+          <dd className="text-base leading-6">
+            <a
+              href={project.website}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center gap-1.5 hover:text-studio-orange focus-visible:outline-2 focus-visible:outline-studio-orange"
+            >
+              {new URL(project.website).hostname}
+              <span aria-hidden="true" className="text-studio-orange">↗</span>
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+      <div className="flex flex-col gap-3.5 border-b border-rule pb-7">
+        <Eyebrow index="03">{copy.story}</Eyebrow>
+        <p data-motion="rise" className="text-lg leading-6.5">{project.description}</p>
       </div>
-      <div data-motion="rise" className="space-y-3">
-        <SectionLabel>The approach</SectionLabel>
-        <p className="text-lg leading-7 text-studio-muted">{project.approach}</p>
+      <div className="flex flex-col gap-3.5">
+        <Eyebrow index="04">{copy.approach}</Eyebrow>
+        <p data-motion="rise" className="text-lg leading-6.5 text-ash">{project.approach}</p>
       </div>
-      <div className="space-y-3 border-t border-studio-line pt-6">
-        <SectionLabel>Creative & production</SectionLabel>
-        <p className="text-lg">Beyond Creative</p>
-      </div>
-      <a
-        href={project.website}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex min-h-11 items-center font-studio-mono text-label uppercase text-studio-orange hover:underline"
-      >
-        Visit client website ↗
-      </a>
     </aside>
   );
 }

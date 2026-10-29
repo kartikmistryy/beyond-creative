@@ -1,78 +1,51 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import getFooterContent from "@/lib/redesign/getFooterContent";
-import BrandLogo from "./BrandLogo";
-import ActionLink from "./ActionLink";
-import SectionLabel from "./SectionLabel";
+import FooterNav from "./FooterNav";
+import FooterStar from "./FooterStar";
+import FooterWordmark from "./FooterWordmark";
+import PillLink from "./PillLink";
 
 export default function SiteFooter() {
   const content = getFooterContent(usePathname());
   return (
-    <footer className={`border-t border-studio-line px-gutter pt-16 lg:pt-24 ${content.voiceAgent ? "pb-28" : "pb-6"}`}>
-      <div className="mx-auto max-w-studio space-y-16">
-        {!content.compact && (
-          <div className="grid gap-12 lg:grid-cols-3 lg:items-end lg:gap-18">
-            <h2 className="text-footer-title tracking-display lg:col-span-2">
-              <span className="block">{content.title[0]}</span>{" "}
-              <span className="block text-studio-orange">{content.title[1]}</span>
-            </h2>
-            <div className="space-y-6 pb-3">
-              <SectionLabel>Let’s talk</SectionLabel>
-              <ActionLink href="/contact">{content.action}</ActionLink>
-              <p className="max-w-lg text-xl leading-7 text-studio-muted">{content.body}</p>
+    <footer className={`overflow-hidden border-t border-rule bg-black font-body font-normal text-white ${content.voiceAgent ? "pb-24" : ""}`}>
+      <div className="flex flex-col gap-16 px-7 pt-20 pb-16 lg:flex-row lg:justify-between lg:pt-28 lg:pb-24">
+        <div className="flex max-w-xl flex-col gap-8">
+          <FooterStar />
+          <h2 className="text-5xl leading-none font-light tracking-tighter lg:text-7xl">
+            <span className="block">{content.title[0]}</span>
+            <span className="block">{content.title[1]}</span>
+          </h2>
+          <p className="max-w-100 text-base leading-6 text-ash">{content.body}</p>
+          {content.showAction && (
+            <div>
+              <PillLink href="/contact">{content.action}</PillLink>
             </div>
-          </div>
-        )}
-        <div
-          data-motion="stagger"
-          className={`grid gap-12 md:grid-cols-4 lg:grid-cols-6 ${content.compact ? "" : "border-t border-studio-line pt-8"}`}
-        >
-          <div className="space-y-6 md:col-span-2 lg:col-span-4">
-            <Link href="/" className="inline-block">
-              <BrandLogo large />
-            </Link>
-            <p className="whitespace-pre-line text-base leading-6 text-studio-muted">{content.location}</p>
-            <p className="max-w-2xl text-sm leading-5 text-studio-muted">{content.acknowledgement}</p>
-          </div>
-          <nav aria-label="Footer navigation" className="space-y-5">
-            <SectionLabel>Menu</SectionLabel>
-            <ul>
-              {content.links.map((link) => (
-                <li key={link.href}>
-                  <Link className="inline-block py-1 text-lg hover:text-studio-orange" href={link.href}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <nav aria-label="Social links" className="space-y-5">
-            <SectionLabel>Socials</SectionLabel>
-            <ul>
-              {content.socials.map((link) => (
-                <li key={link.label}>
-                  <a
-                    className="inline-block py-1 text-lg hover:text-studio-orange"
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {link.label} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          )}
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-6 border-t border-studio-line pt-6 font-studio-mono text-xs leading-5 text-studio-muted">
-          <p>{content.copyright}</p>
-          <a href="#top" className="inline-flex min-h-11 items-center hover:text-studio-text">
-            Back to top ↑
-          </a>
+        <div className="flex flex-col gap-8 lg:items-end lg:self-end">
+          <ul aria-label="Social links" className="flex items-center gap-8 text-2xl font-light tracking-tight lg:text-3xl">
+            {content.socials.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="group inline-flex min-h-11 items-center gap-2 transition-colors duration-300 hover:text-studio-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  {link.label}
+                  <span aria-hidden="true" className="text-studio-orange transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transition-none">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <FooterNav />
         </div>
       </div>
+      <FooterWordmark text={content.wordmark} video={content.wordmarkVideo} poster={content.wordmarkPoster} />
+      <p className="px-7 pt-2 pb-6 text-label text-ash">{content.copyright}</p>
     </footer>
   );
 }

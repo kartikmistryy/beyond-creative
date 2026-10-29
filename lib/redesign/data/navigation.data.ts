@@ -1,6 +1,10 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const navigation = [
   {
+    href: "/",
+    label: "Home",
+  },
+  {
     href: "/projects",
     label: "Work",
   },

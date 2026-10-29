@@ -1,16 +1,20 @@
-import { animate, scroll } from "framer-motion";
+import { animate, stagger } from "framer-motion";
+import motion from "./data/motion.data";
+import { onSiteReady } from "./siteReady";
 
+/** Page hero title lines slide in from opposite edges once the preloader has cleared. */
 export default function createHeroMotion(root: HTMLElement) {
-  const image = root.querySelector<HTMLElement>('[data-motion="hero-image"]');
-  const section = image?.closest("section");
-  if (!image || !section || !matchMedia("(min-width: 768px)").matches) return () => {};
-  const original = image.getAttribute("style");
-  const animation = animate(image, { scale: [1.04, 1.16], y: [0, 80] }, { ease: "linear" });
-  const stop = scroll(animation, { target: section, offset: ["start start", "end start"] });
+  const lines = Array.from(root.querySelectorAll<HTMLElement>("[data-hero-title] > span"));
+  if (!lines.length) return () => {};
+  let active: ReturnType<typeof animate> | undefined;
+  // Each line is full width, so shifting by its own width parks it just past the screen edge.
+  lines.forEach((line, index) => animate(line, { x: index % 2 ? "110%" : "-110%" }, { duration: 0 }));
+  const stop = onSiteReady(() => {
+    active = animate(lines, { x: "0%" }, { ...motion.reveal, duration: 1.1, delay: stagger(0.15) });
+  });
   return () => {
     stop();
-    animation.cancel();
-    if (original === null) image.removeAttribute("style");
-    else image.setAttribute("style", original);
+    active?.cancel();
+    lines.forEach((line) => line.removeAttribute("style"));
   };
 }

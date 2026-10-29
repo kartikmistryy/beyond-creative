@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import content from "@/lib/redesign/data/automation.data";
 import metadataContent from "@/lib/redesign/data/metadata.data";
+import services from "@/lib/redesign/data/services.data";
+import serviceArtwork from "@/lib/redesign/serviceArtwork";
 import AutomationHero from "@/components/redesign/AutomationHero";
 import AutomationDemo from "@/components/redesign/AutomationDemo";
 import AutomationCapabilities from "@/components/redesign/AutomationCapabilities";
 import AutomationWorkflows from "@/components/redesign/AutomationWorkflows";
-import ProcessSection from "@/components/redesign/ProcessSection";
-import FaqSection from "@/components/redesign/FaqSection";
+import StepStack from "@/components/redesign/StepStack";
+import FaqList from "@/components/redesign/FaqList";
 import VoiceAgentProvider from "@/components/redesign/VoiceAgentProvider";
 
 export const metadata: Metadata = {
@@ -17,12 +19,12 @@ export const metadata: Metadata = {
 export default function AutomationPage() {
   return (
     <VoiceAgentProvider>
-      <AutomationHero content={content.hero} />
+      <AutomationHero content={content.hero} stills={services.filter((service) => service.slug === "ai-business-automation").map((service) => ({ src: serviceArtwork(service) }))} />
       <AutomationDemo content={content.demo} />
       <AutomationCapabilities content={content.capabilities} />
       <AutomationWorkflows content={content.workflows} />
-      <ProcessSection {...content.process} />
-      <FaqSection {...content.faq} />
+      <StepStack {...content.process} />
+      <FaqList index="06" {...content.faq} />
     </VoiceAgentProvider>
   );
 }

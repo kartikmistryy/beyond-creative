@@ -1,14 +1,10 @@
 "use client";
 
+import type { ReactNode } from "react";
 import useVoiceAgent from "@/lib/redesign/useVoiceAgent";
+import voiceAgent from "@/lib/redesign/data/voiceAgent.data";
 
-export default function VoiceButton({
-  prominent = false,
-  children,
-}: {
-  prominent?: boolean;
-  children: React.ReactNode;
-}) {
+export default function VoiceButton({ children }: { children: ReactNode }) {
   const { open, status } = useVoiceAgent();
   return (
     <button
@@ -16,14 +12,12 @@ export default function VoiceButton({
       type="button"
       onClick={open}
       disabled={status !== "ready"}
-      className={
-        prominent
-          ? "inline-flex min-h-14 items-center justify-center gap-4 bg-studio-orange px-6 py-4 text-lg font-medium text-studio-bg hover:bg-studio-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-studio-text disabled:cursor-wait disabled:opacity-60"
-          : "inline-flex min-h-11 items-center gap-3 font-studio-mono text-label uppercase hover:underline disabled:opacity-60"
-      }
+      className="mt-3 inline-flex min-h-11 items-center justify-center gap-3.5 rounded-full bg-studio-orange px-6.5 py-4.5 text-label leading-4 tracking-wide text-black uppercase transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-wait disabled:opacity-60"
     >
-      {status === "error" ? "Voice demo unavailable" : children}
-      <span data-motion-arrow="" aria-hidden="true">↘</span>
+      {status === "error" ? voiceAgent.status.error : children}
+      <span aria-hidden="true" data-motion-arrow="right" className="text-lg leading-5.5">
+        ⟶
+      </span>
     </button>
   );
 }

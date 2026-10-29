@@ -2,11 +2,15 @@
 const footer = {
   title: ["Bring us", "the brief."],
   action: "Book a discovery call",
-  body: "Tell us your goals. We’ll scope the right\nmix of creative, marketing and AI.",
-  location: "Melbourne, Australia\nCreative, performance marketing & AI",
-  acknowledgement:
-    "We acknowledge the Traditional Custodians of the land on which we work, and pay our respects to Elders past and present.",
-  copyright: "© 2026 Beyond Creative Media Pty Ltd. All rights reserved.",
+  body: "Tell us your goals. We’ll scope the right mix of creative, marketing and AI.",
+  contact: {
+    title: ["Melbourne,", "Australia."],
+    body: "Creative, performance marketing & AI.",
+  },
+  wordmark: "Beyond Creative",
+  wordmarkVideo: "/videos/showreel.mp4",
+  wordmarkPoster: "/images/paper/7FGR4M0YVJTNP7E3KH111VNZAM.webp",
+  copyright: "© 2026 Beyond Creative Media Pty Ltd.",
   socials: [
     {
       label: "Instagram",

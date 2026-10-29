@@ -1,40 +1,32 @@
-import Image from "next/image";
 import type automation from "@/lib/redesign/data/automation.data";
-import voiceAgent from "@/lib/redesign/data/voiceAgent.data";
+import BotStage from "./BotStage";
+import Eyebrow from "./Eyebrow";
 import Lines from "./Lines";
-import SectionLabel from "./SectionLabel";
-import VoiceButton from "./VoiceButton";
 
+// ponytail: bg-stone-100 / text-orange-700 stand in for Paper's #F4F1EC / #C42A00 until colour tokens exist.
 export default function AutomationDemo({ content }: { content: typeof automation.demo }) {
   return (
-    <section className="px-gutter pb-section">
-      <div className="mx-auto flex max-w-studio flex-col items-center gap-12 lg:flex-row lg:gap-18">
-        <div data-motion="image" data-motion-parallax="" className="relative aspect-work-equal w-full overflow-hidden lg:w-5/12 lg:shrink-0">
-          <Image
-            src={content.image}
-            alt="Rotary telephone with broken ASCII streaks"
-            fill
-            sizes="(max-width: 1023px) 100vw, 45vw"
-            className="scale-125 object-cover"
-          />
+    <section className="flex flex-col justify-between gap-20 bg-stone-100 px-7 py-35 font-body font-normal text-black lg:flex-row">
+      <div className="flex flex-col gap-10 lg:w-160 lg:shrink-0">
+        <div className="*:text-black">
+          <Eyebrow index="02">{content.label}</Eyebrow>
         </div>
-        <div className="flex-1 space-y-6">
-          <SectionLabel>{content.label}</SectionLabel>
-          <h2 className="text-heading tracking-heading">
-            <Lines text={content.title} />
-          </h2>
-          <p data-motion="rise" className="max-w-2xl text-lg leading-8 text-studio-muted md:text-copy">{content.body}</p>
-          <ol data-motion="stagger" className="space-y-3 border-y border-studio-line py-5">
-            {content.steps.map((step) => (
-              <li key={step} className="font-studio-mono text-xs leading-5 text-studio-muted">
-                {step}
-              </li>
-            ))}
-          </ol>
-          <VoiceButton>Open the voice bot</VoiceButton>
-          <p className="max-w-xl text-sm leading-5 text-studio-muted">{voiceAgent.sampleNotice}</p>
-        </div>
+        <h2 className="font-display text-automation-title text-orange-700 uppercase">
+          <Lines text={content.title} />
+        </h2>
+        <p data-motion="rise" className="max-w-130 text-lg leading-6.5">
+          {content.body}
+        </p>
+        <ol data-motion="stagger" className="border-t border-black/20">
+          {content.steps.map((step, index) => (
+            <li key={step} className="flex gap-5 border-b border-black/20 py-4 text-lg leading-6">
+              <span className="w-10 shrink-0 text-orange-700">{String(index + 1).padStart(2, "0")}</span>
+              {step}
+            </li>
+          ))}
+        </ol>
       </div>
+      <BotStage questions={content.questions} />
     </section>
   );
 }

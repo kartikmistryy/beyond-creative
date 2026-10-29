@@ -1,23 +1,20 @@
 import type home from "@/lib/redesign/data/home.data";
-import SectionLabel from "./SectionLabel";
-import Words from "./Words";
+import Eyebrow from "./Eyebrow";
+import PillLink from "./PillLink";
 
 export default function HomeStudio({ content }: { content: typeof home.studio }) {
   return (
-    <section className="px-gutter pb-24 pt-section lg:pt-home-studio">
-      <div className="mx-auto max-w-studio space-y-10">
-        <SectionLabel>{content.label}</SectionLabel>
-        <h2 className="text-section-title tracking-heading">
-          <span className="block">{content.title[0]}</span>{" "}
-          <span className="block text-studio-orange">{content.title[1]}</span>
-        </h2>
-        <div className="grid gap-8 pt-4 lg:grid-cols-3 lg:gap-18">
-          <p data-motion="rise" className="whitespace-pre-line font-studio-mono text-label text-studio-muted">
-            {content.signature}
-          </p>
-          <p data-motion="words" className="max-w-reading text-xl leading-8 text-studio-muted lg:col-span-2 lg:text-2xl">
-            <Words text={content.body} />
-          </p>
+    <section aria-label={content.label} className="flex flex-col gap-16 bg-black px-7 pt-35 pb-40 font-body font-normal text-white">
+      <Eyebrow index="01">{content.label}</Eyebrow>
+      <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end lg:gap-20">
+        <p data-motion="rise" className="max-w-240 text-home-lead font-light tracking-tight">
+          {content.statement}
+        </p>
+        <div className="flex shrink-0 flex-col gap-6 lg:w-80">
+          <p className="text-lg leading-6.5 text-ash">{content.body}</p>
+          <PillLink href="/about" variant="outline">
+            {content.action}
+          </PillLink>
         </div>
       </div>
     </section>

@@ -1,20 +1,18 @@
 import type about from "@/lib/redesign/data/about.data";
-import SectionLabel from "./SectionLabel";
-import Words from "./Words";
+import Eyebrow from "./Eyebrow";
 
 export default function AboutStory({ content }: { content: typeof about.story }) {
   return (
-    <section id="studio" className="scroll-mt-12 px-gutter py-section">
-      <div className="mx-auto max-w-studio space-y-12">
-        <SectionLabel>{content.label}</SectionLabel>
-        <h2 className="max-w-6xl text-heading tracking-heading">{content.title}</h2>
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-18">
-          <p data-motion="words" className="text-2xl leading-8 tracking-tight">
-            <Words text={content.paragraphs[0]} />
-          </p>
-          <p data-motion="rise" className="max-w-reading text-xl leading-8 text-studio-muted lg:col-span-2 lg:text-copy">
-            {content.paragraphs[1]}
-          </p>
+    <section className="flex flex-col justify-between gap-10 border-t border-rule bg-black px-7 py-35 font-body font-normal text-white lg:flex-row lg:gap-20">
+      <Eyebrow index="02">{content.label}</Eyebrow>
+      <div className="flex flex-col gap-12 lg:w-250 lg:shrink-0">
+        <h2 className="text-about-story font-light tracking-tight">{content.title}</h2>
+        <div className="flex flex-col gap-6 md:flex-row md:gap-10">
+          {content.paragraphs.map((paragraph) => (
+            <p key={paragraph} data-motion="fade" className="text-lg leading-6.5 text-ash md:flex-1">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </div>
     </section>

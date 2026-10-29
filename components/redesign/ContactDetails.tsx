@@ -1,94 +1,49 @@
 import Image from "next/image";
 import type contact from "@/lib/redesign/data/contact.data";
-import Lines from "./Lines";
-import SectionLabel from "./SectionLabel";
+import PillLink from "./PillLink";
 
 export default function ContactDetails({ content }: { content: typeof contact }) {
   return (
-    <section className="grid lg:min-h-225 lg:grid-cols-2">
-      <div data-motion="image" data-motion-parallax="" className="relative h-112 overflow-hidden lg:h-auto">
-        <Image
-          src={content.image}
-          alt="Flinders Street Station in Melbourne"
-          fill
-          loading="eager"
-          fetchPriority="high"
-          sizes="(max-width: 1023px) 100vw, 50vw"
-          className="scale-125 object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-studio-bg/70 via-studio-bg/10 to-studio-bg/20" />
-        <div className="absolute inset-x-gutter bottom-10 space-y-3">
-          <p className="text-3xl tracking-tight">
-            {content.city}, {content.country}.
-          </p>
-          <p className="font-studio-mono text-label text-studio-muted">CREATIVE / MARKETING / AI</p>
+    <section
+      aria-label="Contact details"
+      className="flex flex-col gap-20 border-t border-rule bg-black px-7 pt-20 pb-24 font-body font-normal text-white lg:flex-row lg:pb-40"
+    >
+      <div className="flex flex-col gap-12 lg:w-130 lg:shrink-0">
+        <dl data-motion="stagger" className="border-t border-rule">
+          {content.details.map((item) => (
+            <div key={item.label} className="flex flex-col gap-2 border-b border-rule py-5">
+              <dt className="text-label leading-4 text-ash uppercase">{item.label}</dt>
+              <dd className="text-xl leading-7 break-words sm:text-question">
+                {item.href ? (
+                  <a href={item.href} className="transition-colors hover:text-studio-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                    {item.value}
+                  </a>
+                ) : (
+                  item.value
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <div data-motion="rise">
+          <PillLink href={content.booking.href}>{content.booking.label}</PillLink>
+        </div>
+      </div>
+      <figure className="flex min-w-0 grow flex-col gap-2.5">
+        <div data-motion="image" className="relative h-105 overflow-hidden lg:h-150">
+          <Image src={content.image} alt={content.imageAlt} fill sizes="(max-width: 1023px) 100vw, 60vw" className="object-cover" />
+        </div>
+        <figcaption>
           <a
             href={content.photoSource}
             target="_blank"
             rel="noreferrer"
-            className="font-studio-mono text-xs uppercase text-studio-muted hover:text-studio-text"
+            className="text-label leading-4 text-ash transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             {content.photoCredit}
           </a>
-        </div>
-      </div>
-      <div className="space-y-12 px-gutter py-16 lg:px-16 lg:pb-12 lg:pt-35">
-        <div className="space-y-6">
-          <SectionLabel>{content.label}</SectionLabel>
-          <h1 className="text-6xl leading-none tracking-display xl:text-7xl">
-            <Lines text={content.title} />
-          </h1>
-          <p data-motion="rise" className="whitespace-pre-line text-xl leading-7 text-studio-muted">{content.intro}</p>
-        </div>
-        <div data-motion="stagger" className="space-y-8 border-t border-studio-line pt-8">
-          <div className="space-y-3">
-            <SectionLabel>New business</SectionLabel>
-            <a
-              href={`mailto:${content.email}`}
-              className="block break-words text-2xl leading-10 tracking-tight text-studio-orange xl:text-3xl"
-            >
-              {content.email} ↗
-            </a>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div className="space-y-3">
-              <SectionLabel>Call us</SectionLabel>
-              <a href="tel:+61300000000" className="text-2xl leading-9 tracking-tight">
-                {content.phone}
-              </a>
-            </div>
-            <div className="space-y-3">
-              <SectionLabel>Based in</SectionLabel>
-              <p className="text-2xl leading-8">
-                {content.city}
-                <br />
-                {content.country}
-              </p>
-            </div>
-          </div>
-          <div className="space-y-3">
-            <SectionLabel>Follow along</SectionLabel>
-            <div className="flex gap-8 text-xl">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-studio-orange"
-              >
-                Instagram ↗
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-studio-orange"
-              >
-                LinkedIn ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </section>
   );
 }

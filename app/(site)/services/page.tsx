@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import content from "@/lib/redesign/data/servicesPage.data";
 import services from "@/lib/redesign/data/services.data";
 import metadataContent from "@/lib/redesign/data/metadata.data";
-import PageHero from "@/components/redesign/PageHero";
-import ServiceList from "@/components/redesign/ServiceList";
-import SectionLabel from "@/components/redesign/SectionLabel";
-import FaqSection from "@/components/redesign/FaqSection";
+import serviceArtwork from "@/lib/redesign/serviceArtwork";
+import ServicesHero from "@/components/redesign/ServicesHero";
+import ServicesIndex from "@/components/redesign/ServicesIndex";
+import FaqList from "@/components/redesign/FaqList";
 
 export const metadata: Metadata = {
   title: { absolute: metadataContent.services.title },
@@ -15,15 +15,9 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero {...content.hero} />
-      <section id="all-services" className="scroll-mt-12 px-gutter py-section">
-        <div className="mx-auto max-w-studio space-y-12">
-          <SectionLabel>{content.label}</SectionLabel>
-          <h2 className="whitespace-pre-line text-heading tracking-heading">{content.title}</h2>
-          <ServiceList services={services} />
-        </div>
-      </section>
-      <FaqSection {...content.faq} />
+      <ServicesHero content={content.hero} stills={services.map((service) => ({ src: serviceArtwork(service) }))} />
+      <ServicesIndex content={content.index} services={services} />
+      <FaqList {...content.faq} />
     </>
   );
 }

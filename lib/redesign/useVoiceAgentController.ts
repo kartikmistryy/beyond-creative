@@ -6,6 +6,7 @@ import type VoiceAgentApi from "./voiceAgentApi";
 export default function useVoiceAgentController(host: RefObject<HTMLDivElement | null>) {
   const initialized = useRef(false);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [isOpen, setIsOpen] = useState(false);
   function fail() {
     setStatus("error");
   }
@@ -31,6 +32,7 @@ export default function useVoiceAgentController(host: RefObject<HTMLDivElement |
       const launcher = element?.querySelector<HTMLElement>('[aria-label="Open chat"]');
       const close = element?.querySelector<HTMLElement>('[aria-label="Close chat"]');
       if (launcher || close) setStatus("ready");
+      setIsOpen(Boolean(close));
     }
     const observer = new MutationObserver(sync);
     observer.observe(element, { childList: true, subtree: true, attributes: true });
@@ -49,5 +51,5 @@ export default function useVoiceAgentController(host: RefObject<HTMLDivElement |
   function open() {
     host.current?.querySelector<HTMLElement>('[aria-label="Open chat"]')?.click();
   }
-  return { status, open, initialize, fail };
+  return { status, isOpen, open, initialize, fail };
 }

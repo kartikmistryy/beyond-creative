@@ -1,16 +1,22 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const servicesPage = {
   hero: {
-    label: "OUR SERVICES / CREATIVE, MARKETING & AI",
+    label: "Services",
+    reel: "Artwork for each of our services",
     title: ["Good ideas.", "Built to work."],
     intro: "Seven specialist-led services. From how your brand looks and sounds to how your business runs.",
-    anchor: "all-services",
-    anchorLabel: "Explore the services",
   },
-  label: "01\u201307 / OUR SERVICES",
-  title: "Creative, marketing\nand automation.",
+  index: {
+    label: "What we do",
+    title: "Creative, marketing\nand automation.",
+    // Only AI Business Automation has a CTA in the approved design.
+    ctas: {
+      "ai-business-automation": { label: "Try the AI receptionist", href: "/services/ai-business-automation" },
+    } as Partial<Record<string, { label: string; href: string }>>,
+  },
   faq: {
-    label: "WORKING TOGETHER",
+    index: "03",
+    label: "Working together",
     title: "Before\nwe begin.",
     items: [
       {
@@ -27,6 +33,21 @@ const servicesPage = {
         question: "Are invoices and contracts included?",
         answer:
           "Yes. Every project includes a proper tax invoice and a clear agreement, so both sides know what’s included.",
+      },
+      {
+        question: "Can I book just one service?",
+        answer:
+          "The scope is built around the services you need. Tell us whether you have a specific task in mind or need help deciding where to start, and we’ll discuss the most useful approach.",
+      },
+      {
+        question: "What is the difference between SEO and AI automation?",
+        answer:
+          "SEO and AI search visibility help people find your business. AI automation supports the work inside it, such as answering calls, qualifying enquiries and handling repetitive workflows.",
+      },
+      {
+        question: "What should I bring to a discovery call?",
+        answer:
+          "A short overview of your business, your goals and any existing brand, website or campaign material is a useful start. Share any deadlines and budget considerations so the proposed scope reflects what you need.",
       },
     ],
   },

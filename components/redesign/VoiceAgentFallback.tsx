@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import useVoiceAgent from "@/lib/redesign/useVoiceAgent";
 
 export default function VoiceAgentFallback() {
@@ -13,9 +14,10 @@ export default function VoiceAgentFallback() {
     >
       <Link
         href="/contact"
-        className="rounded-full border border-studio-line bg-studio-bg px-6 py-4 text-sm shadow-xl"
+        className="inline-flex items-center gap-2 rounded-full border border-studio-line bg-studio-bg px-6 py-4 text-sm shadow-xl"
       >
-        Voice demo unavailable · Contact us ↗
+        Voice demo unavailable · Contact us
+        <ArrowUpRight aria-hidden="true" className="size-4" strokeWidth={1.5} />
       </Link>
     </aside>
   );
