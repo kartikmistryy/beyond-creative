@@ -24,7 +24,7 @@ export default function SiteHeader() {
         aria-controls="site-menu"
         onClick={() => setOpen(true)}
         className={`fixed top-6.5 right-7 z-40 min-h-11 min-w-11 rounded-full px-4 font-body text-base leading-5 font-normal transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
-          scrolled ? "bg-studio-orange text-black hover:bg-white" : "bg-transparent text-white"
+          scrolled ? "bg-studio-orange text-white hover:bg-white hover:text-black" : "bg-transparent text-white"
         }`}
       >
         Menu

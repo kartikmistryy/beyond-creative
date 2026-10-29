@@ -20,7 +20,7 @@ export default function WorkHero({ stills }: { stills: readonly { src: string }[
         <Marks />
         <h1 data-hero-title="" className="overflow-x-clip font-display text-work-hero text-studio-orange uppercase">
           <span className="block">{title[0]}</span>
-          <span className="block pl-work-indent">{title[1]}</span>
+          <span className="block md:pl-work-indent">{title[1]}</span>
         </h1>
         <Marks />
       </div>

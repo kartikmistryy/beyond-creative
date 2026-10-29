@@ -9,6 +9,9 @@ export default function createRevealMotion(root: HTMLElement) {
   targets.forEach((element) => {
     const kind = element.dataset.motion;
     if (kind === "hero-image" || kind === "zigzag" || element.matches("[data-hero-title]")) return;
+    // Captions inside project cards would be pushed out of the card's clipped frame by the heading
+    // from-state, where the in-view trigger can never see them. The card itself carries the motion.
+    if (!kind && element.closest('[data-motion-hover="project"]')) return;
     const heading = element.matches("h1, h2");
     const named = kind && kind in motion.presets ? (kind as keyof typeof motion.presets) : "rise";
     const preset = motion.presets[heading ? "heading" : named];

@@ -31,13 +31,15 @@ export default function WorkTile({
       />
       <div className="absolute inset-0 bg-linear-to-b from-transparent from-60% to-black/60" />
       <div className="relative flex justify-between gap-4 text-label leading-4 uppercase">
-        <h2>
-          {project.title}
-          <span className="text-studio-orange">{"//"}</span>
-          {project.summary}
-        </h2>
-        <span aria-hidden="true" className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-          {content.view}
+        <h2>{project.title}</h2>
+        {/* The tagline holds the right slot until hover or focus swaps it for the view cue. */}
+        <span className="grid shrink-0 justify-items-end text-ash">
+          <span className="col-start-1 row-start-1 transition-opacity group-hover:opacity-0 group-focus-visible:opacity-0">
+            {project.summary}
+          </span>
+          <span aria-hidden="true" className="col-start-1 row-start-1 text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+            {content.view}
+          </span>
         </span>
       </div>
     </Link>

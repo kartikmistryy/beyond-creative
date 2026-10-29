@@ -10,7 +10,7 @@ import PillLink from "./PillLink";
 export default function SiteFooter() {
   const content = getFooterContent(usePathname());
   return (
-    <footer className={`overflow-hidden border-t border-rule bg-black font-body font-normal text-white ${content.voiceAgent ? "pb-24" : ""}`}>
+    <footer className={`overflow-hidden bg-black font-body font-normal text-white ${content.voiceAgent ? "pb-24" : ""}`}>
       <div className="flex flex-col gap-16 px-7 pt-20 pb-16 lg:flex-row lg:justify-between lg:pt-28 lg:pb-24">
         <div className="flex max-w-xl flex-col gap-8">
           <FooterStar />

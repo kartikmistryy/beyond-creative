@@ -20,7 +20,7 @@ export default function ContactHero({ content, stills }: { content: typeof conta
         <Marks />
         <h1 data-hero-title="" className="overflow-x-clip font-display text-contact-display text-studio-orange uppercase">
           <span className="block">{first}</span>
-          <span className="block pl-contact-indent">{second}</span>
+          <span className="block md:pl-contact-indent">{second}</span>
         </h1>
         <Marks />
       </div>

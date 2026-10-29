@@ -30,7 +30,7 @@ export default function FaqList({ index, label, title, items }: Props) {
         {items.map((item, itemIndex) => {
           const open = active === itemIndex;
           return (
-            <div data-motion="row" key={item.question} className="border-b border-rule">
+            <div data-motion="row" key={item.question} className="border-t border-rule first:border-t-0">
               <h3>
                 <button
                   type="button"
