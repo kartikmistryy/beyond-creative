@@ -4,11 +4,13 @@ import navigation from "./data/navigation.data";
 
 export default function getFooterContent(pathname: string) {
   const automationPage = pathname.includes("ai-business-automation") || pathname === "/ai-automation";
+  const contactPage = pathname === "/contact";
   return {
     ...footer,
-    links: [navigation[1], navigation[0], ...navigation.slice(2)],
+    links: navigation,
     ...(automationPage ? automation.footer : {}),
-    compact: pathname === "/contact",
+    ...(contactPage ? footer.contact : {}),
+    showAction: !contactPage,
     voiceAgent: automationPage,
   };
 }

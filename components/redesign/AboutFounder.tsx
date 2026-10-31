@@ -1,36 +1,37 @@
 import Image from "next/image";
 import type about from "@/lib/redesign/data/about.data";
+import Eyebrow from "./Eyebrow";
 import Lines from "./Lines";
-import SectionLabel from "./SectionLabel";
 
 export default function AboutFounder({ content }: { content: typeof about.founder }) {
   return (
-    <section className="px-gutter pb-section">
-      <div className="mx-auto max-w-studio space-y-12">
-        <SectionLabel>{content.label}</SectionLabel>
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-18">
-          <figure data-motion="image" className="lg:w-2/5 lg:shrink-0">
-            <div className="mx-auto max-w-founder space-y-4">
-              <Image
-                src={content.image}
-                alt="Temporary halftone avatar; Rishabh’s portrait will replace it"
-                width={416}
-                height={520}
-                className="h-auto w-full"
-              />
-              <figcaption>
-                <p className="text-3xl tracking-tight">{content.name}</p>
-                <p className="mt-1 text-xl text-studio-muted">{content.role}</p>
-              </figcaption>
-            </div>
-          </figure>
-          <div className="flex-1 space-y-8">
-            <h2 className="text-heading tracking-heading">
+    <section className="flex flex-col gap-16 bg-black px-7 pb-40 font-body font-normal text-white lg:flex-row lg:gap-3">
+      <figure className="flex flex-col lg:w-170 lg:shrink-0 lg:pb-11">
+        <div data-motion="image" className="relative aspect-about-portrait overflow-hidden">
+          <Image src={content.image} alt={content.alt} fill sizes="(min-width: 64rem) 680px, 100vw" className="object-cover object-top grayscale" />
+        </div>
+        <figcaption className="relative -mt-10 -ml-1 font-display text-about-name text-studio-orange uppercase lg:-mt-21">
+          {content.name}
+        </figcaption>
+      </figure>
+      <div className="flex grow basis-0 flex-col justify-between gap-16 py-1 lg:pl-10">
+        <div className="flex justify-between">
+          <Eyebrow index="03">{content.label}</Eyebrow>
+          <span aria-hidden="true" className="text-xl leading-4 text-studio-orange">
+            +
+          </span>
+        </div>
+        <div className="flex flex-col gap-8">
+          <p className="text-label leading-4 tracking-wide uppercase">{content.role}</p>
+          <h2 className="text-about-founder font-light tracking-tight">
             <Lines text={content.title} />
           </h2>
-            <p data-motion="rise" className="max-w-2xl whitespace-pre-line text-lg leading-8 text-studio-muted md:text-copy">
-              {content.body}
-            </p>
+          <div className="flex flex-col gap-4 lg:w-135">
+            {content.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-lg leading-6.5 text-ash">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </div>

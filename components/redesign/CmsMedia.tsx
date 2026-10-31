@@ -1,7 +1,13 @@
 /* eslint-disable @next/next/no-img-element -- Legacy CMS uploads support arbitrary image hosts. */
 import type { Media } from "@/lib/db";
 
-export default function CmsMedia({ media }: { media: Media | null | undefined }) {
+export default function CmsMedia({
+  media,
+  className = "block h-auto w-full",
+}: {
+  media: Media | null | undefined;
+  className?: string;
+}) {
   if (!media?.url) return null;
   return media.type === "video" ? (
     <video
@@ -11,7 +17,7 @@ export default function CmsMedia({ media }: { media: Media | null | undefined })
       playsInline
       preload="metadata"
       aria-label={media.alt || "Project video"}
-      className="block h-auto w-full"
+      className={className}
     />
   ) : (
     <img
@@ -20,7 +26,7 @@ export default function CmsMedia({ media }: { media: Media | null | undefined })
       alt={media.alt || ""}
       loading="lazy"
       decoding="async"
-      className="block h-auto w-full"
+      className={className}
     />
   );
 }

@@ -1,18 +1,24 @@
 import { animate, hover } from "framer-motion";
 import motion from "./data/motion.data";
 
+const nudge = (direction: string | undefined, active: boolean) => {
+  const offsets: Record<string, number[]> = { down: [0, 4], "down-right": [4, 4], right: [5, 0] };
+  const [x, y] = offsets[direction ?? ""] ?? [5, -5];
+  return active ? { x, y } : { x: 0, y: 0 };
+};
+
 export default function createHoverMotion(root: HTMLElement) {
   const cleanups: (() => void)[] = [];
   root.querySelectorAll<HTMLElement>("[data-motion-hover]").forEach((element) => {
     const image = element.querySelector<HTMLElement>("[data-motion-zoom]");
-    const arrow = element.querySelector<HTMLElement>("[data-motion-arrow]");
-    const targets = [image, arrow].filter((item): item is HTMLElement => Boolean(item));
+    const arrow = element.querySelector<HTMLElement | SVGElement>("[data-motion-arrow]");
+    const targets = [image, arrow].filter((item): item is HTMLElement | SVGElement => Boolean(item));
     const originals = targets.map((target) => target.getAttribute("style"));
-    const animations = new Map<HTMLElement, ReturnType<typeof animate>>();
-    const run = (target: HTMLElement, active: boolean, isImage: boolean) => {
+    const animations = new Map<HTMLElement | SVGElement, ReturnType<typeof animate>>();
+    const run = (target: HTMLElement | SVGElement, active: boolean, isImage: boolean) => {
       animations.get(target)?.stop();
       animations.set(target, animate(target,
-        isImage ? { scale: active ? 1.07 : 1 } : { x: active ? 5 : 0, y: active ? -5 : 0 },
+        isImage ? { scale: active ? 1.07 : 1 } : nudge(target.dataset.motionArrow, active),
         motion.hover,
       ));
     };

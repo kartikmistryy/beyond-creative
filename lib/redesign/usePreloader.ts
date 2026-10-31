@@ -40,10 +40,7 @@ export default function usePreloader() {
     Promise.all([Promise.race([media, wait(preloader.timeout)]), wait(preloader.minDuration)]).then(() => {
       if (finished) return;
       finished = true;
-      tween(100, 0.5, () => {
-        setDone(true);
-        setTimeout(markSiteReady, preloader.exitDelay * 1000);
-      });
+      tween(100, 0.5, () => setDone(true));
     });
     return () => {
       finished = true;
@@ -51,6 +48,10 @@ export default function usePreloader() {
     };
   }, []);
 
-  const finish = () => document.body.classList.remove("overflow-hidden");
+  // Reveals wait for the curtain to fully clear, so the hero headline animates in view.
+  const finish = () => {
+    document.body.classList.remove("overflow-hidden");
+    markSiteReady();
+  };
   return { percent, done, finish };
 }

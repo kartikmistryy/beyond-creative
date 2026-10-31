@@ -1,24 +1,49 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const home = {
   hero: {
-    title: ["Stand out.", "Mean business."],
-    label: "MELBOURNE / CREATIVE & AI AGENCY",
-    description: "Branding, content,\nperformance marketing\nand AI automation.",
+    title: ["Go beyond.", "Get noticed."],
+    label: "(    CREATIVE & AI AGENCY    ·    MELBOURNE    )",
     image: "/images/paper/7FGR4M0YVJTNP7E3KH111VNZAM.webp",
+    video: "/videos/showreel.mp4",
+    cue: "Scroll down",
+    taglines: [
+      "Ideas that refuse to blend in.",
+      "Brands built to be remembered.",
+      "Creative with a pulse. AI with a purpose.",
+      "Loud ideas. Smart systems.",
+    ],
   },
   studio: {
-    label: "WHO WE ARE",
-    title: ["Founder-led strategy.", "Specialist delivery."],
-    signature: "RISHABH / FOUNDER & CREATIVE DIRECTOR\nSEVEN DISCIPLINES. ONE POINT OF CONTACT.",
-    body: "Beyond Creative is a Melbourne creative agency for hospitality, real estate, healthcare and community organisations. Led by founder and creative director Rishabh, our freelance specialists and in-house editor deliver branding, content, websites, SEO, paid campaigns and AI automation. You work directly with the person leading your project.",
+    label: "Who we are",
+    statement:
+      "Founder-led strategy. Specialist delivery. A Melbourne studio for hospitality, real estate, healthcare and community brands.",
+    body: "Led by founder and creative director Rishabh. Seven disciplines, one point of contact.",
+    action: "About the studio",
+  },
+  work: {
+    label: "Selected work",
+    title: "Selected work",
+    action: "All work",
+    view: "( VIEW )",
+    description: "A selection of projects for brands with something to say. Film, social media and content creation.",
   },
   capabilities: {
-    label: "OUR CAPABILITIES\nCREATIVE / MARKETING / AI",
-    title: "Seven disciplines.",
-    subtitle: "Each led by a specialist.",
+    label: "What we do",
+    title: "Seven disciplines. Each led by a specialist.",
+    body: "From how your brand looks and sounds to how your business runs.",
+    action: "All services",
+    names: {
+      "ai-business-automation": "AI Automation",
+      "branding-design": "Branding + Design",
+      "social-media-management": "Social Media",
+      "content-production": "Content Production",
+      "web-development": "Web Development",
+      "seo-ai-search": "SEO + AI Search",
+      "performance-marketing": "Performance Ads",
+    },
   },
   faq: {
-    label: "GOT QUESTIONS?",
+    label: "Got questions?",
     title: ["Straight", "answers."],
     items: [
       {
@@ -40,6 +65,16 @@ const home = {
         question: "Do you lock clients into long contracts?",
         answer:
           "No. Beyond Creative offers no lock-in contracts. We scope each engagement around the services you need, with clear reporting on the work and its performance.",
+      },
+      {
+        question: "What services can you help with?",
+        answer:
+          "We bring together branding and design, social media management, content production, web development, SEO and AI search visibility, performance marketing and AI business automation. The mix depends on your goals.",
+      },
+      {
+        question: "How do we get started?",
+        answer:
+          "Book a discovery call and tell us about your business, what you want to achieve and any timing or budget considerations. That conversation helps define the right scope before a proposal is prepared.",
       },
     ],
   },

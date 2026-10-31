@@ -1,14 +1,13 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const about = {
   hero: {
-    label: "ABOUT BEYOND CREATIVE / MELBOURNE",
+    label: "About us",
+    reel: "Stills from our client projects",
     title: ["Good people.", "Great work."],
     intro: "Creative direction, specialist craft and a direct line to the person leading your project.",
-    anchor: "studio",
-    anchorLabel: "Meet the studio",
   },
   story: {
-    label: "01 / WHO WE ARE",
+    label: "Who we are",
     title: "Every discipline should be led by someone who’s actually good at it.",
     paragraphs: [
       "Beyond Creative is a Melbourne studio bringing creative direction, content, performance marketing and AI systems together.",
@@ -16,19 +15,25 @@ const about = {
     ],
   },
   founder: {
-    label: "02 / THE PEOPLE BEHIND THE WORK",
+    label: "The people behind the work",
     name: "Rishabh",
     role: "Founder & Creative Director",
-    title: "One point of contact.\nA team built for\nyour brief.",
-    body: "Rishabh leads every client relationship directly and sets the creative and strategic direction.\n\nOur in-house editor and freelance specialists bring the craft \u2014 across branding, content, web, performance and AI. You work with the person steering your account, from the first conversation onwards.",
+    title: "One point of contact.\nA team built for your brief.",
+    paragraphs: [
+      "Rishabh leads every client relationship directly and sets the creative and strategic direction.",
+      "Our in-house editor and freelance specialists bring the craft \u2014 across branding, content, web, performance and AI. You work with the person steering your account, from the first conversation onwards.",
+    ],
     image: "/images/paper/27H9AP0AYEN620Y4HX90SQCCAC.webp",
+    alt: "Temporary engraved avatar; Rishabh’s portrait will replace it",
   },
   capabilities: {
-    label: "03 / WHAT WE BRING",
+    label: "What we bring",
     title: "Different disciplines.\nOne standard.",
+    body: "From how your brand looks and sounds to how your business runs.",
+    action: "All services",
   },
   process: {
-    label: "04 / HOW WE WORK",
+    label: "How we work",
     title: "A clear process.\nRoom for good ideas.",
     steps: [
       {
@@ -54,7 +59,7 @@ const about = {
     ],
   },
   faq: {
-    label: "05 / WORKING TOGETHER",
+    label: "Working together",
     title: "Before\nwe begin.",
     items: [
       {
@@ -71,6 +76,21 @@ const about = {
         question: "Are invoices and contracts included?",
         answer:
           "Yes. Every project includes a proper tax invoice and a clear agreement, so both sides know what’s included.",
+      },
+      {
+        question: "Who will I work with directly?",
+        answer:
+          "Rishabh, our founder and creative director, leads client relationships and sets the creative and strategic direction. You have a direct line to the person steering your project.",
+      },
+      {
+        question: "How is your team put together?",
+        answer:
+          "Beyond Creative combines an in-house editor with a network of freelance specialists. The team is shaped around the disciplines your project needs, rather than using the same setup for every brief.",
+      },
+      {
+        question: "Do you only work with Melbourne businesses?",
+        answer:
+          "We’re based in Melbourne and work with businesses across Australia. If a project needs an on-location shoot or an in-person session, we can discuss the practical requirements when defining the scope.",
       },
     ],
   },

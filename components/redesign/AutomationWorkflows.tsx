@@ -1,27 +1,32 @@
 import type automation from "@/lib/redesign/data/automation.data";
-import SectionLabel from "./SectionLabel";
+import Eyebrow from "./Eyebrow";
 
 export default function AutomationWorkflows({ content }: { content: typeof automation.workflows }) {
   return (
-    <section className="border-t border-studio-line px-gutter py-section">
-      <div className="mx-auto max-w-studio space-y-16">
-        <SectionLabel>{content.label}</SectionLabel>
-        <div className="grid items-end gap-10 lg:grid-cols-2 lg:gap-18">
-          <h2 className="text-section-title tracking-display">
+    <section className="flex flex-col gap-20 border-t border-rule bg-black px-7 py-35 font-body font-normal text-white">
+      <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
+        <div className="flex flex-col gap-5">
+          <Eyebrow index="04">{content.label}</Eyebrow>
+          <h2 className="font-display text-automation-display text-studio-orange uppercase">
             <span className="block">{content.title[0]}</span>{" "}
-            <span className="block text-studio-orange">{content.title[1]}</span>
+            <span className="block md:pl-35">{content.title[1]}</span>
           </h2>
-          <p data-motion="rise" className="text-xl leading-8 text-studio-muted md:text-2xl">{content.body}</p>
         </div>
-        <div className="grid gap-10 lg:grid-cols-3 lg:gap-16">
-          {content.items.map((item) => (
-            <div data-motion="rise" key={item.title} className="space-y-5 border-t border-studio-line pt-6">
-              <h3 className="text-3xl leading-9 tracking-tight">{item.title}</h3>
-              <p className="text-xl leading-7 text-studio-muted">{item.body}</p>
-            </div>
-          ))}
-        </div>
+        <p data-motion="rise" className="text-lg leading-6.5 text-ash lg:w-95 lg:shrink-0">
+          {content.body}
+        </p>
       </div>
+      <ul className="flex flex-col gap-10 md:flex-row md:gap-3">
+        {content.items.map((item) => (
+          <li data-motion="rise" key={item.title} className="flex flex-1 flex-col gap-4 border-t border-white pt-6">
+            <span aria-hidden="true" className="text-xl leading-6 text-studio-orange">
+              +
+            </span>
+            <h3 className="text-question">{item.title}</h3>
+            <p className="text-lg leading-6.5 text-ash">{item.body}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

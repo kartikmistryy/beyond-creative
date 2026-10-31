@@ -1,25 +1,30 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const automation = {
   hero: {
-    label: "SERVICES / AI BUSINESS AUTOMATION / MELBOURNE",
+    label: "AI business automation",
+    reel: "AI business automation artwork",
     title: ["Pick up.", "Even when you can’t."],
     intro:
       "Beyond Creative builds AI voice receptionists for Melbourne businesses. Answer enquiries, qualify callers and route calls while your team gets on with the work.",
-    tagline: "AI RECEPTIONISTS. LESS PHONE TAG.",
   },
   demo: {
-    label: "THE AI VOICE RECEPTIONIST",
+    label: "Try the AI receptionist",
     title: "Your first call.\nRight here.",
     body: "Open the voice bot in the bottom-right corner and start a conversation. Ask a question, try an enquiry and hear how our AI assistant responds. No form or sign-up.",
-    image: "/images/paper/0N8GNM5E88DZKAVQ63FB8G19RY.webp",
     steps: [
-      "01 OPEN THE VOICE BOT ↘",
-      "02 ALLOW YOUR MICROPHONE WHEN PROMPTED",
-      "03 START TALKING. SEE HOW IT RESPONDS.",
+      "Open the voice bot",
+      "Allow your microphone when prompted",
+      "Start talking and see how it responds",
+    ],
+    questions: [
+      "What are your opening hours?",
+      "Can I book an appointment for Tuesday?",
+      "How do I get a quote?",
+      "Where are you located?",
     ],
   },
   capabilities: {
-    label: "01 / WHAT AN AI RECEPTIONIST DOES",
+    label: "What it handles",
     title: "What can an AI\nreceptionist do?",
     body: "An AI receptionist is a voice agent that answers business calls, asks relevant questions and directs the enquiry. Beyond Creative configures it around your services, your callers and the handovers your team needs.",
     rows: [
@@ -42,7 +47,7 @@ const automation = {
     ],
   },
   workflows: {
-    label: "02 / AI WORKFLOW & CUSTOMER SERVICE AUTOMATION",
+    label: "Workflow automation",
     title: ["Beyond", "the phone."],
     body: "AI business automation also covers the work around an enquiry. We build custom workflows and customer service automations around the tasks your team repeats, then monitor and refine them as your needs change.",
     items: [
@@ -61,7 +66,7 @@ const automation = {
     ],
   },
   process: {
-    label: "03 / HOW SETUP WORKS",
+    label: "Setup",
     title: "Built around your calls.\nTested before it takes one.",
     steps: [
       {
@@ -83,9 +88,8 @@ const automation = {
     ],
   },
   faq: {
-    label: "04 / AI AUTOMATION FAQ",
+    label: "FAQ",
     title: "Good questions.\nClear answers.",
-    intro: "Start with what matters to your business. We’ll work through the fit before we build.",
     items: [
       {
         question: "Who is an AI receptionist for?",

@@ -1,40 +1,32 @@
 import type automation from "@/lib/redesign/data/automation.data";
+import Eyebrow from "./Eyebrow";
 import Lines from "./Lines";
-import SectionLabel from "./SectionLabel";
 
 export default function AutomationCapabilities({ content }: { content: typeof automation.capabilities }) {
   return (
-    <section className="border-t border-studio-line px-gutter py-section">
-      <div className="mx-auto max-w-studio space-y-14">
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-18">
-          <SectionLabel>{content.label}</SectionLabel>
-          <div className="space-y-7 lg:col-span-2">
-            <h2 className="text-heading tracking-heading">
-            <Lines text={content.title} />
-          </h2>
-            <p className="max-w-reading text-xl leading-8 tracking-tight text-studio-muted md:text-2xl">
-              {content.body}
-            </p>
-          </div>
-        </div>
-        <ol>
-          {content.rows.map((row, index) => (
-            <li
-              data-motion="row"
-              key={row.title}
-              className="grid gap-6 border-t border-studio-line py-8 md:grid-cols-12 md:gap-10 lg:gap-18"
-            >
-              <span className="font-studio-mono text-label text-studio-muted md:col-span-1">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="text-3xl leading-tight tracking-heading md:col-span-4 lg:text-4xl">
-                {row.title}
-              </h3>
-              <p className="text-lg leading-8 text-studio-muted md:col-span-7 lg:text-copy">{row.body}</p>
-            </li>
-          ))}
-        </ol>
+    <section className="flex flex-col justify-between gap-20 bg-black px-7 pt-40 pb-35 font-body font-normal text-white lg:flex-row">
+      <div className="flex flex-col gap-7 lg:w-120 lg:shrink-0">
+        <Eyebrow index="03">{content.label}</Eyebrow>
+        <h2 className="text-statement font-light tracking-tight">
+          <Lines text={content.title} />
+        </h2>
+        <p data-motion="rise" className="text-lg leading-6.5 text-ash">
+          {content.body}
+        </p>
       </div>
+      <ol className="border-t border-rule lg:w-205 lg:shrink-0">
+        {content.rows.map((row, index) => (
+          <li data-motion="row" key={row.title} className="flex gap-7 border-b border-rule py-7">
+            <span className="w-12 shrink-0 text-label leading-8 text-studio-orange">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="flex flex-col gap-2.5">
+              <h3 className="text-question">{row.title}</h3>
+              <p className="max-w-155 text-lg leading-6.5 text-ash">{row.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

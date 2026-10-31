@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter_Tight, Instrument_Serif } from "next/font/google";
+import { Anton, Geist, Geist_Mono, Inter_Tight, Instrument_Serif } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
+const display = Anton({ variable: "--font-anton", subsets: ["latin"], weight: "400", display: "swap" });
 const grotesk = Inter_Tight({ variable: "--font-grotesk", subsets: ["latin"], weight: "variable" });
 const serif = Instrument_Serif({
   variable: "--font-serif",
@@ -10,6 +11,7 @@ const serif = Instrument_Serif({
   weight: "400",
   style: "italic",
 });
+const sans = Geist({ variable: "--font-geist", subsets: ["latin"], display: "swap" });
 const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${grotesk.variable} ${serif.variable} ${mono.variable} bg-studio-bg!`}>
+    <html lang="en" className={`${display.variable} ${grotesk.variable} ${serif.variable} ${sans.variable} ${mono.variable} bg-studio-bg!`}>
       <body className="min-h-svh">{children}</body>
     </html>
   );
