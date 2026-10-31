@@ -26,6 +26,9 @@ export default function SiteMenu({ open, onClose, onClosed }: Props) {
     element.querySelector<HTMLElement>("nav a")?.focus();
   }, [open]);
 
+  // Page navigation remounts the header, unmounting the menu before its close animation can release the lock.
+  useEffect(() => () => document.documentElement.classList.remove("overflow-hidden"), []);
+
   const finish = (definition: unknown) => {
     if (definition !== "closed" || !dialog.current?.open) return;
     dialog.current.close();
