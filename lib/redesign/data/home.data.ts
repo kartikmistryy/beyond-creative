@@ -5,6 +5,13 @@ const home = {
     label: "(    CREATIVE & AI AGENCY    ·    MELBOURNE    )",
     image: "/images/paper/7FGR4M0YVJTNP7E3KH111VNZAM.webp",
     video: "/videos/showreel.mp4",
+    cue: "Scroll down",
+    taglines: [
+      "Ideas that refuse to blend in.",
+      "Brands built to be remembered.",
+      "Creative with a pulse. AI with a purpose.",
+      "Loud ideas. Smart systems.",
+    ],
   },
   studio: {
     label: "Who we are",

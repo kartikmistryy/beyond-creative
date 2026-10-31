@@ -82,6 +82,7 @@
   /* home */
   --text-home-hero: clamp(2.5rem, min(11.944vw, 19.1svh), 10.75rem);
   --text-home-hero--line-height: 0.884;
+  --spacing-home-hero-track: 300svh;
   --spacing-home-hero-indent: 20.833vw;
   --text-home-lead: clamp(2rem, 4.028vw, 3.625rem);
   --text-home-lead--line-height: 1.103;
