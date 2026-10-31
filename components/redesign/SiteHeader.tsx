@@ -12,7 +12,7 @@ export default function SiteHeader() {
   const scrolled = useScrolled(24);
   return (
     <header className="absolute inset-x-0 top-0 z-40 px-7 py-7">
-      <div data-motion="fade" className="flex h-10 items-center">
+      <div data-motion="fade" className="flex h-10 items-center in-data-hero-box-visible:invisible">
         <Link href="/" aria-label="Beyond Creative home">
           <BrandLogo />
         </Link>
@@ -23,8 +23,8 @@ export default function SiteHeader() {
         aria-expanded={open}
         aria-controls="site-menu"
         onClick={() => setOpen(true)}
-        className={`fixed top-6.5 right-7 z-40 min-h-11 min-w-11 rounded-full px-4 font-body text-base leading-5 font-normal transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
-          scrolled ? "bg-studio-orange text-white hover:bg-white hover:text-black" : "bg-transparent text-white"
+        className={`fixed top-6.5 right-7 z-40 min-h-11 min-w-11 rounded-full px-4 font-body text-base leading-5 font-normal transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:in-data-hero-box-visible:invisible ${
+          scrolled ? "bg-studio-orange text-white hover:bg-white hover:text-black in-data-hero-box-visible:bg-black" : "bg-transparent text-white"
         }`}
       >
         Menu

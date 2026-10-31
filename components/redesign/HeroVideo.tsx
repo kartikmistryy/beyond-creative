@@ -47,7 +47,7 @@ export default function HeroVideo({
           type="button"
           onClick={toggle}
           aria-label={playing ? "Pause showreel" : "Play showreel"}
-          className="absolute top-20 right-7 z-10 inline-flex min-h-11 items-center gap-2 text-label leading-4 tracking-wide uppercase hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:top-auto md:bottom-4"
+          className="absolute top-20 right-7 z-30 inline-flex min-h-11 items-center gap-2 text-label leading-4 tracking-wide uppercase hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:top-auto md:bottom-4"
         >
           {playing ? "Pause reel" : "Play reel"}
           {playing ? (

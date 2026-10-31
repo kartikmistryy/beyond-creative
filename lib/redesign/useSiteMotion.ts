@@ -9,6 +9,7 @@ import createScrollProgress from "./createScrollProgress";
 import createParallaxMotion from "./createParallaxMotion";
 import createStackMotion from "./createStackMotion";
 import createGrowMotion from "./createGrowMotion";
+import createHomeHeroMotion from "./createHomeHeroMotion";
 
 export default function useSiteMotion() {
   const root = useRef<HTMLDivElement>(null);
@@ -21,7 +22,7 @@ export default function useSiteMotion() {
       cleanups.forEach((cleanup) => cleanup());
       cleanups = preference.matches
         ? []
-        : [createRevealMotion(element), createHoverMotion(element), createHeroMotion(element), createZigzagMotion(element), createScrollProgress(element), createParallaxMotion(element), createStackMotion(element), createGrowMotion(element)];
+        : [createRevealMotion(element), createHoverMotion(element), createHeroMotion(element), createZigzagMotion(element), createScrollProgress(element), createParallaxMotion(element), createStackMotion(element), createGrowMotion(element), createHomeHeroMotion(element)];
       element.dataset.motionEnabled = String(!preference.matches);
     };
     update();
