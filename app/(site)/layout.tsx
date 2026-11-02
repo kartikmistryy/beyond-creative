@@ -9,7 +9,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div
       id="top"
-      className="relative min-h-svh bg-studio-bg font-studio font-medium tracking-normal text-studio-text selection:bg-studio-orange selection:text-studio-bg"
+      className="relative isolate min-h-svh bg-studio-bg font-studio font-medium tracking-normal text-studio-text selection:bg-studio-orange selection:text-studio-bg"
     >
       <a
         href="#main-content"
@@ -20,7 +20,8 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       <Preloader />
       <SiteMotion>
         <SiteHeader />
-        <main id="main-content">{children}</main>
+        {/* Above the sticky footer so the footer is uncovered as the page scrolls away. A negative z on the footer would also hide it from clicks. */}
+        <main id="main-content" className="relative z-10 bg-studio-bg">{children}</main>
         <SiteFooter />
       </SiteMotion>
     </div>

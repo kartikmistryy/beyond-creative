@@ -1,9 +1,10 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const servicesPage = {
   hero: {
-    label: "Services",
-    reel: "Artwork for each of our services",
-    title: ["Good ideas.", "Built to work."],
+    title: "Good ideas.",
+    lead: "Built to",
+    // The last word rolls through these in turn; the first is the approved line "Built to work."
+    words: ["work.", "scale.", "answer.", "sell.", "be found."],
     intro: "Seven specialist-led services. From how your brand looks and sounds to how your business runs.",
   },
   index: {

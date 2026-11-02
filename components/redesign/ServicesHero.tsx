@@ -1,31 +1,31 @@
 import type servicesPage from "@/lib/redesign/data/servicesPage.data";
-import Eyebrow from "./Eyebrow";
-import HeroReel from "./HeroReel";
+import HeroWords from "./HeroWords";
 
-const cornerMarks = (
-  <div aria-hidden="true" className="flex justify-between text-xl leading-5 text-studio-orange">
-    <span>+</span>
-    <span>+</span>
-  </div>
-);
-
-export default function ServicesHero({ content, stills }: { content: typeof servicesPage.hero; stills: readonly { src: string }[] }) {
+export default function ServicesHero({ content }: { content: typeof servicesPage.hero }) {
   return (
-    <section className="relative isolate flex min-h-svh flex-col justify-end gap-16 overflow-clip bg-black px-7 pt-36 pb-20 font-body font-normal text-white lg:gap-30 lg:pt-47">
-      <HeroReel stills={stills} label={content.reel} />
-      <div className="relative flex flex-col gap-4.5">
-        {cornerMarks}
-        <h1 data-hero-title="" className="overflow-x-clip font-display text-services-hero text-studio-orange uppercase">
-          <span className="block">{content.title[0]}</span>
-          <span className="block md:pl-services-indent">{content.title[1]}</span>
+    <section className="flex min-h-svh flex-col justify-center overflow-clip bg-black px-7 pt-36 pb-20 font-body font-normal text-white">
+      {/* The faded words spill one line above and below the h1 (two from xl, beside the intro), so leave room before the stacked intro. */}
+      <div className="flex flex-col gap-hero-spill xl:flex-row xl:items-center xl:justify-between xl:gap-12">
+        {/* Each direct child slides in from a screen edge once the preloader clears (createHeroMotion). */}
+        <h1
+          data-hero-title=""
+          className="flex items-center gap-2.5 font-display text-hero-slot whitespace-nowrap uppercase md:gap-9"
+        >
+          <span>
+            <span className="sr-only">{content.title} </span>
+            {content.lead}
+            <span className="sr-only"> {content.words[0]}</span>
+          </span>
+          <HeroWords words={content.words} />
         </h1>
-        {cornerMarks}
-      </div>
-      <div className="relative flex flex-col-reverse gap-10 md:flex-row md:items-end md:justify-between">
-        <Eyebrow index="01">{content.label}</Eyebrow>
-        <p data-motion="fade" className="text-services-intro font-light tracking-tight md:w-130 md:shrink-0">
-          {content.intro}
-        </p>
+        <div className="flex shrink-0 flex-col gap-5 xl:items-end xl:text-right">
+          <p aria-hidden="true" className="font-display text-4xl leading-none uppercase">
+            {content.title}
+          </p>
+          <p data-motion="fade" className="text-xl leading-7 font-light md:w-64">
+            {content.intro}
+          </p>
+        </div>
       </div>
     </section>
   );

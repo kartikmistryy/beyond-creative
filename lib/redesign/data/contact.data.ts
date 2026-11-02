@@ -2,8 +2,6 @@
 const contact = {
   hero: {
     titleLines: ["Tell us", "what’s next."],
-    eyebrow: "Contact",
-    reel: "Flinders Street Station in Melbourne",
     intro: "A brand, a campaign or an AI build. Tell us what you have in mind.",
   },
   details: [
@@ -11,6 +9,8 @@ const contact = {
     { label: "Phone", value: "+61 3 0000 0000", href: "tel:+61300000000" },
     { label: "Studio", value: "Melbourne, Australia" },
   ],
+  city: "Melbourne",
+  timeZone: "Australia/Melbourne",
   image: "/images/paper/7ZBVTWSYYAE6MAE1PX6G1X4YAG.webp",
   imageAlt: "Flinders Street Station in Melbourne",
   photoCredit: "Photography: Fabio Cagni / Unsplash",

@@ -75,6 +75,13 @@
       transform: translateX(-50%);
     }
   }
+  /* Work hero progress bar: one fill per still, so keep it in step with WorkHeroReel's interval. */
+  --animate-reel-fill: reel-fill 5s linear both;
+  @keyframes reel-fill {
+    from {
+      transform: scaleX(0);
+    }
+  }
 }
 
 /* v3 page tokens: one block per page so parallel work never edits the same lines. */
@@ -82,7 +89,7 @@
   /* home */
   --text-home-hero: clamp(2.5rem, min(11.944vw, 19.1svh), 10.75rem);
   --text-home-hero--line-height: 0.884;
-  --spacing-home-hero-track: 300svh;
+  --spacing-home-hero-track: 200svh;
   --spacing-home-hero-indent: 20.833vw;
   --text-home-lead: clamp(2rem, 4.028vw, 3.625rem);
   --text-home-lead--line-height: 1.103;
@@ -94,8 +101,9 @@
 
 @theme {
   /* work + project */
-  --text-work-hero: clamp(2.5rem, 13.194vw, 11.875rem);
-  --text-work-hero--line-height: 0.884;
+  /* Work hero (Paper W3): 140px at 1440px, bottom-left over the reel. */
+  --text-work-hero: clamp(3rem, 9.722vw, 8.75rem);
+  --text-work-hero--line-height: 0.93;
   --text-work-lede: clamp(1.375rem, 2.083vw, 1.875rem);
   --text-work-lede--line-height: 1.267;
   --text-work-row: clamp(2.5rem, 5vw, 4.5rem);
@@ -106,16 +114,15 @@
   --text-project-title--line-height: 2.75rem;
   --text-project-next: clamp(3rem, 13.889vw, 12.5rem);
   --text-project-next--line-height: 0.9;
-  --spacing-work-indent: 13.889vw;
 }
 
 @theme {
   /* services */
-  --text-services-hero: clamp(2.75rem, 13.194vw, 11.875rem);
-  --text-services-hero--line-height: 0.884;
-  --spacing-services-indent: 13.889vw;
-  --text-services-intro: clamp(1.375rem, 2.083vw, 1.875rem);
-  --text-services-intro--line-height: 1.267;
+  /* Rolling-word heroes (Services "Built to [word]", About "Great [word]"): 144px on a 1440px screen, leaving room for the intro beside it. */
+  --text-hero-slot: clamp(3rem, 10vw, 12rem);
+  --text-hero-slot--line-height: 1;
+  /* One slot line: how far the faded words spill below the h1 when the intro stacks under it. */
+  --spacing-hero-spill: calc(clamp(3rem, 10vw, 12rem) + 1.5rem);
   --text-services-open: clamp(3rem, 6.667vw, 6rem);
   --text-services-open--line-height: 0.917;
   --text-services-row: clamp(2.25rem, 5vw, 4.5rem);
@@ -143,18 +150,13 @@
 
 @theme {
   /* contact */
-  --text-contact-display: clamp(2.75rem, 13.194vw, 11.875rem);
-  --text-contact-display--line-height: 0.884;
-  --spacing-contact-indent: calc(var(--text-contact-display) * 1.053);
+  /* Hero headline (Paper C4): 120px at 1440px, sized to the left column beside the postcard. */
+  --text-contact-hero: clamp(3.5rem, 8.333vw, 7.5rem);
+  --text-contact-hero--line-height: 0.93;
 }
 
 @theme {
   /* about */
-  --text-about-hero: clamp(2.75rem, 13.194vw, 11.875rem);
-  --text-about-hero--line-height: 0.884;
-  --spacing-about-indent: 13.889vw;
-  --text-about-lede: clamp(1.375rem, 2.083vw, 1.875rem);
-  --text-about-lede--line-height: 1.267;
   --text-about-story: clamp(2rem, 4.028vw, 3.625rem);
   --text-about-story--line-height: 1.103;
   --text-about-founder: clamp(1.75rem, 2.5vw, 2.25rem);

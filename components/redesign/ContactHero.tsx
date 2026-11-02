@@ -1,35 +1,43 @@
-import Eyebrow from "./Eyebrow";
-import HeroReel from "./HeroReel";
 import type contact from "@/lib/redesign/data/contact.data";
+import ContactPostcard from "./ContactPostcard";
+import PillLink from "./PillLink";
 
-function Marks() {
+/** Contact hero (Paper C4): the headline, the ways to reach us and a Melbourne postcard, all on one screen. */
+export default function ContactHero({ content }: { content: typeof contact }) {
+  const [first, second] = content.hero.titleLines;
   return (
-    <div aria-hidden="true" className="flex justify-between text-xl leading-5 text-studio-orange">
-      <span>+</span>
-      <span>+</span>
-    </div>
-  );
-}
-
-export default function ContactHero({ content, stills }: { content: typeof contact.hero; stills: readonly { src: string }[] }) {
-  const [first, second] = content.titleLines;
-  return (
-    <section className="relative isolate flex min-h-svh flex-col justify-end gap-20 overflow-clip bg-black px-7 pt-36 pb-20 font-body font-normal text-white lg:gap-30 lg:pt-47">
-      <HeroReel stills={stills} label={content.reel} />
-      <div className="relative flex flex-col gap-4.5">
-        <Marks />
-        <h1 data-hero-title="" className="overflow-x-clip font-display text-contact-display text-studio-orange uppercase">
+    <section className="flex min-h-svh flex-col gap-12 bg-black px-7 pt-36 pb-7 font-body font-normal text-white lg:flex-row lg:gap-7 lg:pt-24">
+      <div className="flex flex-col justify-between gap-12 lg:w-155 lg:shrink-0">
+        {/* Each direct child slides in from a screen edge once the preloader clears (createHeroMotion). */}
+        <h1 data-hero-title="" className="font-display text-contact-hero uppercase">
           <span className="block">{first}</span>
-          <span className="block md:pl-contact-indent">{second}</span>
+          <span className="block text-studio-orange">{second}</span>
         </h1>
-        <Marks />
+        <div className="flex flex-col gap-8">
+          <p data-motion="rise" className="max-w-110 text-xl leading-7 font-light">
+            {content.hero.intro}
+          </p>
+          <dl data-motion="stagger" className="border-t border-rule">
+            {content.details.map((item) => (
+              <div key={item.label} className="flex flex-wrap justify-between gap-x-6 gap-y-1 border-b border-rule py-3.5 text-lg">
+                <dt>{item.label}</dt>
+                <dd className="break-words">
+                  {item.href ? (
+                    <a href={item.href} className="transition-colors hover:text-studio-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                      {item.value}
+                    </a>
+                  ) : (
+                    item.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          {/* No reveal: its 80px start offset would push it below the fold, where it never triggers. */}
+          <PillLink href={content.booking.href}>{content.booking.label}</PillLink>
+        </div>
       </div>
-      <div className="relative flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <Eyebrow index="01">{content.eyebrow}</Eyebrow>
-        <p data-motion="rise" className="max-w-130 text-2xl leading-8 font-light tracking-tight md:text-3xl md:leading-9.5">
-          {content.intro}
-        </p>
-      </div>
+      <ContactPostcard content={content} />
     </section>
   );
 }

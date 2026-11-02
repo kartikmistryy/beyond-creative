@@ -1,7 +1,7 @@
 // Two identical halves, so the marquee's shift by half its width loops without a seam.
 const items = Array.from({ length: 24 }, (_, index) => index);
 
-/** Black ticker along the foot of the hero box, prompting a scroll. Fades out as the box opens. */
+/** Black ticker along the foot of the hero frame, prompting a scroll. Fades out as the frame opens. */
 export default function HomeHeroCue({ text }: { text: string }) {
   return (
     <div data-home-cue="" aria-hidden="true" className="absolute inset-x-0 bottom-0 overflow-hidden bg-black py-1.5 text-sm text-white motion-reduce:hidden">

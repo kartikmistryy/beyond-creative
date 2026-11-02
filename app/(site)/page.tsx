@@ -6,6 +6,7 @@ import HomeStudio from "@/components/redesign/HomeStudio";
 import SelectedWork from "@/components/redesign/SelectedWork";
 import HomeCapabilities from "@/components/redesign/HomeCapabilities";
 import FaqList from "@/components/redesign/FaqList";
+import ClientStrip from "@/components/redesign/ClientStrip";
 
 export const metadata: Metadata = {
   title: { absolute: metadataContent.home.title },
@@ -21,6 +22,7 @@ export default function HomePage() {
       <SelectedWork content={content.work} projects={projects} />
       <HomeCapabilities content={content.capabilities} services={services} />
       <FaqList index="04" {...content.faq} />
+      <ClientStrip />
     </>
   );
 }

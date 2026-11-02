@@ -2,9 +2,7 @@
 const workPage = {
   hero: {
     title: ["Made to make", "an impression."],
-    label: "Selected work",
-    reel: "Stills from selected projects",
-    intro: "A selection of projects for brands with something to say. Film, social media and content creation.",
+    nowShowing: "Now showing",
   },
   views: { grid: "Grid", list: "List", label: "Project view" },
   view: "( VIEW )",
