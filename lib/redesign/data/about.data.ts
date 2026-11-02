@@ -1,9 +1,10 @@
 // Approved Paper copy. Project descriptions and contact details remain preview content.
 const about = {
   hero: {
-    label: "About us",
-    reel: "Stills from our client projects",
-    title: ["Good people.", "Great work."],
+    title: "Good people.",
+    lead: "Great",
+    // Rolling words after "Great" (Paper A1); the first one completes the approved line.
+    words: ["work.", "craft.", "people.", "calls.", "taste."],
     intro: "Creative direction, specialist craft and a direct line to the person leading your project.",
   },
   story: {

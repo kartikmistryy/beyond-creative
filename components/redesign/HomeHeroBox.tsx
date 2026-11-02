@@ -14,7 +14,7 @@ const links = navigation.filter((link) => link.href !== "/");
 const linkClass =
   "pointer-events-auto hidden hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current md:block";
 
-/** The orange box: nav and taglines first; once open, the orange fades to the showreel and its headline. */
+/** Full-screen layer over the hero frame: nav and taglines first; once the frame has opened, the headline. */
 export default function HomeHeroBox({ content }: { content: typeof home.hero }) {
   const box = useRef<HTMLDivElement>(null);
   useHeroBoxFlag(box);
@@ -27,11 +27,8 @@ export default function HomeHeroBox({ content }: { content: typeof home.hero }) 
     <div
       ref={box}
       data-home-box=""
-      className="pointer-events-none absolute inset-x-4 top-32 bottom-24 z-20 overflow-hidden text-black md:inset-x-1/4 md:top-1/6 md:bottom-1/6 motion-reduce:inset-0 motion-reduce:text-white"
+      className="pointer-events-none absolute inset-0 z-20 overflow-hidden text-black motion-reduce:text-white"
     >
-      {/* The shade sits under the orange fill; as the fill fades it leaves the showreel's readability gradient. */}
-      <div data-home-shade="" className="absolute inset-0 bg-linear-to-b from-black/55 via-black/10 via-40% to-black/70 opacity-0 motion-reduce:opacity-100" />
-      <div data-home-fill="" className="absolute inset-0 bg-studio-orange motion-reduce:hidden" />
       <nav aria-label="Primary" className="relative mx-7 mt-7 flex h-10 items-center justify-center text-lg leading-6 md:justify-between">
         {links.slice(0, 2).map(link)}
         <Image

@@ -47,7 +47,7 @@ export default function SiteMenu({ open, onClose, onClosed }: Props) {
         event.preventDefault();
         onClose();
       }}
-      className="m-0 h-dvh max-h-none w-screen max-w-none overflow-y-auto bg-transparent p-0 font-body font-normal text-black backdrop:bg-transparent"
+      className="pointer-events-auto m-0 h-dvh max-h-none w-screen max-w-none overflow-y-auto bg-transparent p-0 font-body font-normal text-black backdrop:bg-transparent"
     >
       <motion.div
         initial="closed"

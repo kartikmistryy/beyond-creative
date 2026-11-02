@@ -123,10 +123,6 @@ const automation = {
       },
     ],
   },
-  footer: {
-    title: ["More time.", "For your team."],
-    body: "Tell us where calls or repetitive tasks slow you down. We’ll scope a useful place to start.",
-  },
 } as const;
 
 export default automation;

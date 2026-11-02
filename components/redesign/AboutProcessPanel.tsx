@@ -16,6 +16,7 @@ export default function AboutProcessPanel({ step, index, count, open, onSelect }
   const stripTitle = `transition-opacity duration-300 motion-reduce:transition-none ${open ? "lg:opacity-0" : ""}`;
   return (
     <li
+      onMouseEnter={onSelect}
       className={`relative overflow-hidden border-t border-rule transition-all duration-600 ease-spring motion-reduce:transition-none lg:basis-37.5 lg:shrink-0 lg:border-t-0 lg:border-l lg:first:border-l-0 ${
         open ? "bg-studio-orange text-black lg:grow" : "text-white lg:grow-0"
       }`}
