@@ -1,12 +1,12 @@
-// Approved Paper copy (v3 · 07 Contact). Contact details remain preview content.
+// Approved Paper copy (v3 · 07 Contact). Email and phone are the live studio contacts.
 const contact = {
   hero: {
     titleLines: ["Tell us", "what’s next."],
     intro: "A brand, a campaign or an AI build. Tell us what you have in mind.",
   },
   details: [
-    { label: "Email", value: "hello@beyondcreative.example", href: "mailto:hello@beyondcreative.example" },
-    { label: "Phone", value: "+61 3 0000 0000", href: "tel:+61300000000" },
+    { label: "Email", value: "beyondcreativeau@gmail.com", href: "mailto:beyondcreativeau@gmail.com" },
+    { label: "Phone", value: "+61 435 608 645", href: "tel:+61435608645" },
     { label: "Studio", value: "Melbourne, Australia" },
   ],
   city: "Melbourne",
@@ -18,7 +18,7 @@ const contact = {
   booking: {
     label: "Book a discovery call",
     // ponytail: mailto until a scheduling link (Calendly or similar) exists.
-    href: "mailto:hello@beyondcreative.example?subject=Discovery%20call",
+    href: "mailto:beyondcreativeau@gmail.com?subject=Discovery%20call",
   },
 };
 
