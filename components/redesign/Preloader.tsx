@@ -42,16 +42,10 @@ export default function Preloader() {
               aria-hidden="true"
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="absolute bottom-6 left-gutter font-studio-mono text-label tabular-nums"
+              className="absolute right-gutter bottom-6 font-display text-headline text-studio-orange tabular-nums uppercase"
             >
-              {String(percent).padStart(3, "0")}%
+              {percent}%
             </motion.span>
-            <motion.div
-              aria-hidden="true"
-              animate={{ scaleX: percent / 100 }}
-              transition={{ duration: 0.2, ease: "linear" }}
-              className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-studio-orange"
-            />
           </motion.div>
         )}
       </AnimatePresence>

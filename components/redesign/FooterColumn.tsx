@@ -12,8 +12,8 @@ const linkClass =
 export default function FooterColumn({ heading, links, external }: Props) {
   return (
     <div className="flex flex-col">
-      <h2 className="mb-6 text-xl leading-none lg:text-2xl">{heading}</h2>
-      <ul className="flex flex-col gap-2 text-sm break-words lg:text-base">
+      <h2 className="mb-3 font-semibold">{heading}</h2>
+      <ul className="flex flex-col gap-2 break-words lg:gap-1.5">
         {links.map((link) => (
           <li key={link.href}>
             {external ? (
